@@ -24,5 +24,6 @@ validation-*.tar
 
 # Custom
 
-.idea/
-validation.iml
+/.idea/
+/validation.iml
+/lib/sandbox/sandbox.ex

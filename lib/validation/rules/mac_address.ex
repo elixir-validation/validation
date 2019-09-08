@@ -1,7 +1,10 @@
-defmodule Validation.MacAddress do
+defmodule Validation.Rules.MacAddress do
+
+
+  # @TODO: ADD LIST OF CHARACTERS TO BE IGNORED
 
   @doc """
-  See `Validation.mac_address/1`
+  Validates whether the input is a valid MAC address.
   """
   @spec validate(String.t) :: Validation.default
   def validate(input) when is_binary(input) do

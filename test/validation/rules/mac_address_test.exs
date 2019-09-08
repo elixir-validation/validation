@@ -1,6 +1,6 @@
-defmodule Validation.MacAddressTest do
+defmodule Validation.Rules.MacAddressTest do
   use ExUnit.Case
-  alias Validation.MacAddress, as: V
+  alias Validation.Rules.MacAddress, as: V
   doctest Validation
 
   test "valid mac address" do
