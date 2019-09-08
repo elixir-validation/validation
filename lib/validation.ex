@@ -6,15 +6,10 @@ defmodule Validation do
   """
 
   @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Validation.hello()
-      :world
-
+  Validates whether the input is a valid MAC address.
   """
-  def hello do
-    :world
+  @spec mac_address(String.t) :: default
+  def mac_address(input) when is_binary(input) do
+    Validation.MacAddress.validate(input)
   end
 end
