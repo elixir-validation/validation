@@ -29,4 +29,12 @@ defmodule Validation do
   def alphanumeric(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
     Validation.Rules.Alphanumeric.validate(input, excluded_characters)
   end
+
+  @doc """
+  Validates ranges.
+  """
+  @spec between(number, number, number) :: Validation.default
+  def between(value, min, max) when is_number(value) and is_number(min) and is_number(max) do
+    Validation.Rules.Between.validate(value, min, max)
+  end
 end

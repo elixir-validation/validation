@@ -1,8 +1,5 @@
 defmodule Validation.Rules.MacAddress do
 
-
-  # @TODO: ADD LIST OF CHARACTERS TO BE IGNORED
-
   @doc """
   Validates whether the input is a valid MAC address.
   """
