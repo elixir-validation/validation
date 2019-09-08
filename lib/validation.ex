@@ -23,7 +23,7 @@ defmodule Validation do
   end
 
   @doc """
-  Validates whether the input is alphanumeric excluding specific characters.
+  Validates whether the input is alphanumeric, excluding specific characters.
   """
   @spec alphanumeric(String.t, String.t) :: Validation.default
   def alphanumeric(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
@@ -36,5 +36,21 @@ defmodule Validation do
   @spec between(number, number, number) :: Validation.default
   def between(value, min, max) when is_number(value) and is_number(min) and is_number(max) do
     Validation.Rules.Between.validate(value, min, max)
+  end
+
+  @doc """
+  Validates if value is considered as "No".
+  """
+  @spec no(String.t) :: Validation.default
+  def no(input) when is_binary(input) do
+    Validation.Rules.No.validate(input)
+  end
+
+  @doc """
+  Validates if value is considered as "Yes".
+  """
+  @spec yes(String.t) :: Validation.default
+  def yes(input) when is_binary(input) do
+    Validation.Rules.Yes.validate(input)
   end
 end

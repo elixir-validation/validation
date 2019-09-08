@@ -15,7 +15,7 @@ defmodule Validation.Rules.Alphanumeric do
   end
 
   @doc """
-  Validates whether the input is alphanumeric excluding specific characters.
+  Validates whether the input is alphanumeric, excluding specific characters.
   """
   @spec validate(String.t, String.t) :: Validation.default
   def validate(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
