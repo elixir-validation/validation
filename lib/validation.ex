@@ -1,4 +1,6 @@
 defmodule Validation do
+  @type default :: {:ok} | {:error, String.t}
+
   @moduledoc """
   Documentation for Validation.
   """
