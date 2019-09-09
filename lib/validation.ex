@@ -53,4 +53,12 @@ defmodule Validation do
   def yes(input) when is_binary(input) do
     Validation.Rules.Yes.validate(input)
   end
+
+  @doc """
+  Validates whether the input is even.
+  """
+  @spec even(Integer.t) :: Validation.default
+  def even(input) when is_integer(input) do
+    Validation.Rules.Even.validate(input)
+  end
 end
