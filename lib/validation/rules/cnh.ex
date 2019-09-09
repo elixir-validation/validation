@@ -59,7 +59,7 @@ defmodule Validation.Rules.CNH do
     validate_digits(c, s1, s2, p, input)
   end
 
-  def error_result do
+  defp error_result do
     {:error, "Invalid CNH input."}
   end
 end

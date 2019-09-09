@@ -60,7 +60,7 @@ defmodule Validation.Rules.CNPJ do
     end
   end
 
-  def error_result do
+  defp error_result do
     {:error, "Invalid CNPJ input."}
   end
 
