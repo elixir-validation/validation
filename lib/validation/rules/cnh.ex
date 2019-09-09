@@ -14,7 +14,6 @@ defmodule Validation.Rules.CNH do
       # validate digits using a modulus 11 algorithm
       {c, s1, s2, p, input} = validate_digits(0, 0, 0, 9, input)
 
-
       dv1 = rem(s1, 11)
 
       input_9 = String.at(input, 9) |> String.to_integer
@@ -31,11 +30,7 @@ defmodule Validation.Rules.CNH do
           if dv2 < 0 do
             dv2 + 11
           else
-            if dv2 > 9 do
-              0
-            else
-              dv2
-            end
+            if dv2 > 9, do: 0, else: dv2
           end
 
         if input_10 == check do
