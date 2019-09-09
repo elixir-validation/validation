@@ -13,7 +13,7 @@ defmodule Validation.Rules.AlphanumericTest do
     assert {:ok} = V.validate("foobar")
   end
 
-  test "valid with exclusion of characters" do
+  test "valid alphanumeric with exclusion of characters" do
     assert {:ok} = V.validate("gontijo_", "_")
     assert {:ok} = V.validate("google.com", ".")
     assert {:ok} = V.validate("matheus gontijo", " ")
@@ -36,7 +36,7 @@ defmodule Validation.Rules.AlphanumericTest do
     assert {:error, _} = V.validate("matheus_gontijo")
   end
 
-  test "invalid with exclusion of characters" do
+  test "invalid alphanumeric with exclusion of characters" do
     assert {:error, _} = V.validate("gontijo_", "$")
     assert {:error, _} = V.validate("google.com", "*")
     assert {:error, _} = V.validate("matheus gontijo", "_")
