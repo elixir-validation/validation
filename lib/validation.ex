@@ -404,6 +404,24 @@ defmodule Validation do
   end
 
   @doc """
+  Validates whether the input is valid Luhn.
+
+      # true
+      V.validate("9773725370")
+      V.validate("2222400041240011")
+      V.validate("340316193809364")
+
+      # false
+      V.validate("")
+      V.validate("true")
+      V.validate("8888888888888887")
+  """
+  @spec luhn(String.t) :: boolean
+  def luhn(input) when is_binary(input) do
+    Validation.Rules.Luhn.validate(input)
+  end
+
+  @doc """
   Validates whether the input is a valid MAC address.
 
       # true
