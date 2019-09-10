@@ -3,8 +3,6 @@ defmodule Validation.Rules.Lowercase do
 
   @spec validate(String.t) :: boolean
   def validate(input) when is_binary(input) do
-    input_lowercase = String.downcase(input)
-
-    input == input_lowercase
+    input == String.downcase(input)
   end
 end
