@@ -232,6 +232,17 @@ defmodule ValidationTest do
 
 
 
+    # luhn
+    assert V.luhn("9773725370")
+    assert V.luhn("2222400041240011")
+    assert V.luhn("340316193809364")
+
+    refute V.luhn("")
+    refute V.luhn("true")
+    refute V.luhn("8888888888888887")
+
+
+
     # even
     assert V.even(0)
     assert V.even(2)
