@@ -1,7 +1,5 @@
 defmodule Validation do
 
-  @type default :: {:ok} | {:error, String.t}
-
   @moduledoc """
   @TODO: update docs.. wrapper to the rules
   """
@@ -23,7 +21,7 @@ defmodule Validation do
       V.alpha("_")
       V.alpha("dgç")
   """
-  @spec alpha(String.t) :: Validation.default
+  @spec alpha(String.t) :: boolean
   def alpha(input) when is_binary(input) do
     Validation.Rules.Alpha.validate(input)
   end
@@ -41,7 +39,7 @@ defmodule Validation do
       V.alpha("google.com321", "*")
       V.alpha("john doe1", "_")
   """
-  @spec alpha(String.t, String.t) :: Validation.default
+  @spec alpha(String.t, String.t) :: boolean
   def alpha(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
     Validation.Rules.Alpha.validate(input, excluded_characters)
   end
@@ -57,7 +55,7 @@ defmodule Validation do
       V.alphanumeric("number 100%");
       V.alphanumeric("foo_bar");
   """
-  @spec alphanumeric(String.t) :: default
+  @spec alphanumeric(String.t) :: boolean
   def alphanumeric(input) when is_binary(input) do
     Validation.Rules.Alphanumeric.validate(input)
   end
@@ -73,7 +71,7 @@ defmodule Validation do
       V.alphanumeric("number 100%", "%");
       V.alphanumeric("foo_bar", "%");
   """
-  @spec alphanumeric(String.t, String.t) :: Validation.default
+  @spec alphanumeric(String.t, String.t) :: boolean
   def alphanumeric(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
     Validation.Rules.Alphanumeric.validate(input, excluded_characters)
   end
@@ -89,7 +87,7 @@ defmodule Validation do
       V.between(15, 20, 30)
       V.between(70, 300, 999)
   """
-  @spec between(number, number, number) :: Validation.default
+  @spec between(number, number, number) :: boolean
   def between(value, min, max) when is_number(value) and is_number(min) and is_number(max) do
     Validation.Rules.Between.validate(value, min, max)
   end
@@ -111,7 +109,7 @@ defmodule Validation do
       V.cnh("0265131640")
       V.cnh("0439732280")
   """
-  @spec cnh(String.t) :: Validation.default
+  @spec cnh(String.t) :: boolean
   def cnh(input) when is_binary(input) do
     Validation.Rules.CNH.validate(input)
   end
@@ -132,7 +130,7 @@ defmodule Validation do
       V.cnpj("00000000000000")
       V.cnpj("99-010-0.")
   """
-  @spec cnpj(String.t) :: Validation.default
+  @spec cnpj(String.t) :: boolean
   def cnpj(input) when is_binary(input) do
     Validation.Rules.CNPJ.validate(input)
   end
@@ -156,7 +154,7 @@ defmodule Validation do
       V.cpf("8.8.8.8.8.8.8.8.8.8.8")
       V.cpf("693-319-110-40")
   """
-  @spec cpf(String.t) :: Validation.default
+  @spec cpf(String.t) :: boolean
   def cpf(input) when is_binary(input) do
     Validation.Rules.CPF.validate(input)
   end
@@ -176,7 +174,7 @@ defmodule Validation do
       V.consonant("aeiou")
       V.consonant("Foo")
   """
-  @spec consonant(String.t) :: Validation.default
+  @spec consonant(String.t) :: boolean
   def consonant(input) when is_binary(input) do
     Validation.Rules.Consonant.validate(input)
   end
@@ -193,7 +191,7 @@ defmodule Validation do
       V.consonant("awww%", "%")
       V.consonant("uwwwq", "_")
   """
-  @spec consonant(String.t, String.t) :: Validation.default
+  @spec consonant(String.t, String.t) :: boolean
   def consonant(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
     Validation.Rules.Consonant.validate(input, excluded_characters)
   end
@@ -214,7 +212,7 @@ defmodule Validation do
       V.even(-3)
       V.even(9999999)
   """
-  @spec even(Integer.t) :: Validation.default
+  @spec even(Integer.t) :: boolean
   def even(input) when is_integer(input) do
     Validation.Rules.Even.validate(input)
   end
@@ -235,7 +233,7 @@ defmodule Validation do
       V.lowercase("First Character Uppercase")
       V.lowercase("With Numbers 1 2 3")
   """
-  @spec lowercase(String.t) :: Validation.default
+  @spec lowercase(String.t) :: boolean
   def lowercase(input) when is_binary(input) do
     Validation.Rules.Lowercase.validate(input)
   end
@@ -252,7 +250,7 @@ defmodule Validation do
       V.mac_address("")
       V.mac_address("00-1122:33:44:55")
   """
-  @spec mac_address(String.t) :: default
+  @spec mac_address(String.t) :: boolean
   def mac_address(input) when is_binary(input) do
     Validation.Rules.MacAddress.validate(input)
   end
@@ -276,7 +274,7 @@ defmodule Validation do
       V.no("Não")
       V.no("não")
   """
-  @spec no(String.t) :: Validation.default
+  @spec no(String.t) :: boolean
   def no(input) when is_binary(input) do
     Validation.Rules.No.validate(input)
   end
@@ -296,7 +294,7 @@ defmodule Validation do
       V.odd(-100)
       V.odd(9999998)
   """
-  @spec odd(Integer.t) :: Validation.default
+  @spec odd(Integer.t) :: boolean
   def odd(input) when is_integer(input) do
     Validation.Rules.Odd.validate(input)
   end
@@ -317,7 +315,7 @@ defmodule Validation do
       V.uppercase("First Character Uppercase")
       V.uppercase("With Numbers 1 2 3")
   """
-  @spec uppercase(String.t) :: Validation.default
+  @spec uppercase(String.t) :: boolean
   def uppercase(input) when is_binary(input) do
     Validation.Rules.Uppercase.validate(input)
   end
@@ -337,7 +335,7 @@ defmodule Validation do
       V.vowel("16")
       V.vowel("\\r")
   """
-  @spec vowel(String.t) :: Validation.default
+  @spec vowel(String.t) :: boolean
   def vowel(input) when is_binary(input) do
     Validation.Rules.Vowel.validate(input)
   end
@@ -353,7 +351,7 @@ defmodule Validation do
       V.vowel("b==aaaa", "=")
       V.vowel("bc==aeoiu", "b!-")
   """
-  @spec vowel(String.t, String.t) :: Validation.default
+  @spec vowel(String.t, String.t) :: boolean
   def vowel(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
     Validation.Rules.Vowel.validate(input, excluded_characters)
   end
@@ -377,7 +375,7 @@ defmodule Validation do
       V.yes("Yoo")
       V.yes("Yiip")
   """
-  @spec yes(String.t) :: Validation.default
+  @spec yes(String.t) :: boolean
   def yes(input) when is_binary(input) do
     Validation.Rules.Yes.validate(input)
   end

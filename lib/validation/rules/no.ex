@@ -3,7 +3,7 @@ defmodule Validation.Rules.No do
 
   # @TODO: support other languages
 
-  @spec validate(String.t) :: Validation.default
+  @spec validate(String.t) :: boolean
   def validate(input) when is_binary(input) do
     String.match?(input, ~r/^n(o(t|pe)?|ix|ay)?$/i)
   end

@@ -1,7 +1,7 @@
 defmodule Validation.Rules.Luhn do
   @moduledoc false
 
-  @spec validate(String.t) :: Validation.default
+  @spec validate(String.t) :: boolean
   def validate(input) when is_binary(input) do
     sum = 0
 

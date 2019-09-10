@@ -1,7 +1,7 @@
 defmodule Validation.Rules.CPF do
   @moduledoc false
 
-  @spec validate(String.t) :: Validation.default
+  @spec validate(String.t) :: boolean
   def validate(input) when is_binary(input) do
     # Ugly code. But it works.
     # Code ported from jsfromhell.com

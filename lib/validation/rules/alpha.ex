@@ -1,12 +1,12 @@
 defmodule Validation.Rules.Alpha do
   @moduledoc false
 
-  @spec validate(String.t) :: Validation.default
+  @spec validate(String.t) :: boolean
   def validate(input) when is_binary(input) do
     String.match?(input, ~r/^[a-zA-Z]*$/)
   end
 
-  @spec validate(String.t, String.t) :: Validation.default
+  @spec validate(String.t, String.t) :: boolean
   def validate(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
     excluded_characters_list = String.codepoints(excluded_characters)
 
