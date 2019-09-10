@@ -197,6 +197,28 @@ defmodule ValidationTest do
 
 
 
+    # digit/1
+    assert V.digit("165")
+    assert V.digit("01650")
+    assert V.digit("01")
+
+    refute V.digit("")
+    refute V.digit("-1.1")
+    refute V.digit("-12")
+    refute V.digit("1.0")
+
+
+
+    # digit/2
+    assert V.digit("1.0", ".")
+    assert V.digit("16-50", "-")
+
+    refute V.digit("")
+    refute V.digit("1.%0", ".")
+    refute V.digit("3333316-5.0/", "-.")
+
+
+
     # even
     assert V.even(0)
     assert V.even(2)

@@ -306,6 +306,42 @@ defmodule Validation do
   end
 
   @doc """
+  Validates whether the input is a valid digit.
+
+      # true
+      V.digit("165")
+      V.digit("01650")
+      V.digit("01")
+
+      # false
+      V.digit("")
+      V.digit("-1.1")
+      V.digit("-12")
+      V.digit("1.0")
+  """
+  @spec digit(String.t) :: boolean
+  def digit(input) when is_binary(input) do
+    Validation.Rules.Digit.validate(input)
+  end
+
+  @doc """
+  Validates whether the input is a valid digit, excluding specific characters.
+
+      # true
+      V.digit("1.0", ".")
+      V.digit("16-50", "-")
+
+      # false
+      V.digit("")
+      V.digit("1.%0", ".")
+      V.digit("3333316-5.0/", "-.")
+  """
+  @spec digit(String.t, String.t) :: boolean
+  def digit(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
+    Validation.Rules.Digit.validate(input, excluded_characters)
+  end
+
+  @doc """
   Validates whether the input is even.
 
       # true
