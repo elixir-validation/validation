@@ -219,6 +219,19 @@ defmodule ValidationTest do
 
 
 
+    # email
+    assert V.email("john@gmail.com")
+    assert V.email("hello+world@mydomain.com")
+    assert V.email("mail.email@foo.bar.com")
+
+    refute V.email("plainaddress")
+    refute V.email("#@%^%#$@#$@#.com")
+    refute V.email("test@test.com.")
+    refute V.email(".test@test.com")
+    refute V.email("@domain.com")
+
+
+
     # even
     assert V.even(0)
     assert V.even(2)

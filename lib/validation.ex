@@ -342,6 +342,26 @@ defmodule Validation do
   end
 
   @doc """
+  Validates whether the input is a valid email. See [RFC822](http://www.ex-parrot.com/~pdw/Mail-RFC822-Address.html)
+
+      # true
+      V.email("john@gmail.com")
+      V.email("hello+world@mydomain.com")
+      V.email("mail.email@foo.bar.com")
+
+      # false
+      V.email("plainaddress")
+      V.email("#@%^%#$@#$@#.com")
+      V.email("test@test.com.")
+      V.email(".test@test.com")
+      V.email("@domain.com")
+  """
+  @spec email(String.t) :: boolean
+  def email(input) when is_binary(input) do
+    Validation.Rules.Email.validate(input)
+  end
+
+  @doc """
   Validates whether the input is even.
 
       # true
