@@ -10,8 +10,9 @@ defmodule ValidationTest do
 
   2) Validate wrapper: the validation module is just a wrapper to the rules,
   and it should also be covered by tests, in order to make sure the API works as expected.
+  But keep in mind that the main tests are not found here.
   """
-  test "valid documentation" do
+  test "validate documentation" do
 
     # alpha/1
     assert V.alpha("")
@@ -110,6 +111,66 @@ defmodule ValidationTest do
     refute V.cpf("999999999.99")
     refute V.cpf("8.8.8.8.8.8.8.8.8.8.8")
     refute V.cpf("693-319-110-40")
+
+
+
+    # credit_card
+    assert V.credit_card("2223000048400011")
+    assert V.credit_card("2222 4000 4124 0011")
+    assert V.credit_card("4024.0071.5336.1885")
+
+    refute V.credit_card("it isnt my credit c)ard number")
+    refute V.credit_card("1234 1234 1234 1234")
+    refute V.credit_card("1234.1234.1234.12__34")
+
+
+
+    # credit_card_amex
+    assert V.credit_card_amex("340-3161-9380-9364")
+
+    refute V.credit_card_amex("5376 7473 9720 8720")
+    refute V.credit_card_amex("4024.0071.5336.1885")
+
+
+
+    # credit_card_diners
+    assert V.credit_card_diners("30351042633884")
+
+    refute V.credit_card_diners("5376 7473 9720 8720")
+    refute V.credit_card_diners("4024.0071.5336.1885")
+
+
+
+    # credit_card_discover
+    assert V.credit_card_discover("6011000990139424")
+
+    refute V.credit_card_discover("5376 7473 9720 8720")
+    refute V.credit_card_discover("4024.0071.5336.1885")
+
+
+
+    # credit_card_jcb
+    assert V.credit_card_jcb("3566002020360505")
+
+    refute V.credit_card_jcb("5376 7473 9720 8720")
+    refute V.credit_card_jcb("4024.0071.5336.1885")
+
+
+
+    # credit_card_master
+    assert V.credit_card_master("5376 7473 9720 8720")
+
+    refute V.credit_card_master("340-3161-9380-9364")
+    refute V.credit_card_master("4024.0071.5336.1885")
+
+
+
+    # credit_card_visa
+    assert V.credit_card_visa("4024 007 193 879")
+    assert V.credit_card_visa("4024.0071.5336.1885")
+
+    refute V.credit_card_visa("340-3161-9380-9364")
+    refute V.credit_card_visa("5376 7473 9720 8720")
 
 
 

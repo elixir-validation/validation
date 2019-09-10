@@ -160,6 +160,115 @@ defmodule Validation do
   end
 
   @doc """
+  Validates whether the input is a valid credit card.
+
+      # true
+      V.credit_card("2223000048400011")
+      V.credit_card("2222 4000 4124 0011")
+      V.credit_card("4024.0071.5336.1885")
+
+      # false
+      V.credit_card("it isnt my credit c)ard number")
+      V.credit_card("1234 1234 1234 1234")
+      V.credit_card("1234.1234.1234.12__34")
+  """
+  @spec credit_card(String.t) :: boolean
+  def credit_card(input) when is_binary(input) do
+    Validation.Rules.CreditCard.validate(input)
+  end
+
+  @doc """
+  Validates whether the input is a valid American Express (amex) credit card.
+
+      # true
+      V.credit_card_amex("340-3161-9380-9364")
+
+      # false
+      V.credit_card_amex("5376 7473 9720 8720")  # master
+      V.credit_card_amex("4024.0071.5336.1885")  # visa
+  """
+  @spec credit_card_amex(String.t) :: boolean
+  def credit_card_amex(input) when is_binary(input) do
+    Validation.Rules.CreditCard.Amex.validate(input)
+  end
+
+  @doc """
+  Validates whether the input is a valid Diners credit card.
+
+      # true
+      V.credit_card_diners("30351042633884")
+
+      # false
+      V.credit_card_diners("5376 7473 9720 8720")  # master
+      V.credit_card_diners("4024.0071.5336.1885")  # visa
+  """
+  @spec credit_card_diners(String.t) :: boolean
+  def credit_card_diners(input) when is_binary(input) do
+    Validation.Rules.CreditCard.Diners.validate(input)
+  end
+
+  @doc """
+  Validates whether the input is a valid Discover credit card.
+
+      # true
+      V.credit_card_discover("6011000990139424")
+
+      # false
+      V.credit_card_discover("5376 7473 9720 8720")  # master
+      V.credit_card_discover("4024.0071.5336.1885")  # visa
+  """
+  @spec credit_card_discover(String.t) :: boolean
+  def credit_card_discover(input) when is_binary(input) do
+    Validation.Rules.CreditCard.Discover.validate(input)
+  end
+
+  @doc """
+  Validates whether the input is a valid Jcb credit card.
+
+      # true
+      V.credit_card_jcb("3566002020360505")
+
+      # false
+      V.credit_card_jcb("5376 7473 9720 8720")  # master
+      V.credit_card_jcb("4024.0071.5336.1885")  # visa
+  """
+  @spec credit_card_jcb(String.t) :: boolean
+  def credit_card_jcb(input) when is_binary(input) do
+    Validation.Rules.CreditCard.Jcb.validate(input)
+  end
+
+  @doc """
+  Validates whether the input is a valid Master credit card.
+
+      # true
+      V.credit_card_master("5376 7473 9720 8720")
+
+      # false
+      V.credit_card_master("340-3161-9380-9364")   # amex
+      V.credit_card_master("4024.0071.5336.1885")  # visa
+  """
+  @spec credit_card_master(String.t) :: boolean
+  def credit_card_master(input) when is_binary(input) do
+    Validation.Rules.CreditCard.Master.validate(input)
+  end
+
+  @doc """
+  Validates whether the input is a valid VISA credit card.
+
+      # true
+      V.credit_card_visa("4024 007 193 879")
+      V.credit_card_visa("4024.0071.5336.1885")
+
+      # false
+      V.credit_card_visa("340-3161-9380-9364")   # amex
+      V.credit_card_visa("5376 7473 9720 8720")  # master
+  """
+  @spec credit_card_visa(String.t) :: boolean
+  def credit_card_visa(input) when is_binary(input) do
+    Validation.Rules.CreditCard.Visa.validate(input)
+  end
+
+  @doc """
   Validates whether the input is has only consonants.
 
       # true
