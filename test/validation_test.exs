@@ -12,246 +12,248 @@ defmodule ValidationTest do
   and it should also be covered by tests, in order to make sure the API works as expected.
   """
   test "valid documentation" do
-    # alpha/1
-    assert {:ok} = V.alpha("")
-    assert {:ok} = V.alpha("a")
-    assert {:ok} = V.alpha("john")
-    assert {:ok} = V.alpha("doe")
-    assert {:ok} = V.alpha("foobar")
 
-    assert {:error, _} = V.alpha("123")
-    assert {:error, _} = V.alpha("number 100%")
-    assert {:error, _} = V.alpha("@#$")
-    assert {:error, _} = V.alpha("_")
-    assert {:error, _} = V.alpha("dgç")
+    # alpha/1
+    assert V.alpha("")
+    assert V.alpha("a")
+    assert V.alpha("john")
+    assert V.alpha("doe")
+    assert V.alpha("foobar")
+
+    refute V.alpha("123")
+    refute V.alpha("number 100%")
+    refute V.alpha("@#$")
+    refute V.alpha("_")
+    refute V.alpha("dgç")
 
 
 
     # alpha/2
-    assert {:ok} = V.alpha("john_", "_")
-    assert {:ok} = V.alpha("google.com", ".")
-    assert {:ok} = V.alpha("john doe", " ")
+    assert V.alpha("john_", "_")
+    assert V.alpha("google.com", ".")
+    assert V.alpha("john doe", " ")
 
-    assert {:error, _} = V.alpha("john_123", "$")
-    assert {:error, _} = V.alpha("google.com321", "*")
-    assert {:error, _} = V.alpha("john doe1", "_")
+    refute V.alpha("john_123", "$")
+    refute V.alpha("google.com321", "*")
+    refute V.alpha("john doe1", "_")
 
 
 
     # alphanumeric/1
-    assert {:ok} = V.alphanumeric("foo123");
-    assert {:ok} = V.alphanumeric("100number");
+    assert V.alphanumeric("foo123");
+    assert V.alphanumeric("100number");
 
-    assert {:error, _} = V.alphanumeric("number 100%");
-    assert {:error, _} = V.alphanumeric("foo_bar");
+    refute V.alphanumeric("number 100%");
+    refute V.alphanumeric("foo_bar");
 
 
 
     # alphanumeric/2
-    assert {:ok} = V.alphanumeric("foo 123", " ");
-    assert {:ok} = V.alphanumeric("foo_123", "_");
+    assert V.alphanumeric("foo 123", " ");
+    assert V.alphanumeric("foo_123", "_");
 
-    assert {:error, _} = V.alphanumeric("number 100%", "%");
-    assert {:error, _} = V.alphanumeric("foo_bar", "%");
+    refute V.alphanumeric("number 100%", "%");
+    refute V.alphanumeric("foo_bar", "%");
 
 
 
 
     # between
-    assert {:ok} = V.between(15, 10, 20)
-    assert {:ok} = V.between(70, 0, 100)
+    assert V.between(15, 10, 20)
+    assert V.between(70, 0, 100)
 
-    assert {:error, _} = V.between(15, 20, 30)
-    assert {:error, _} = V.between(70, 300, 999)
+    refute V.between(15, 20, 30)
+    refute V.between(70, 300, 999)
 
 
 
     # cnh
-    assert {:ok} = V.cnh("02650306461")
-    assert {:ok} = V.cnh("04397322870")
-    assert {:ok} = V.cnh("04375701302")
-    assert {:ok} = V.cnh("02996843266")
-    assert {:ok} = V.cnh("04375700501")
+    assert V.cnh("02650306461")
+    assert V.cnh("04397322870")
+    assert V.cnh("04375701302")
+    assert V.cnh("02996843266")
+    assert V.cnh("04375700501")
 
-    assert {:error, _} = V.cnh("")
-    assert {:error, _} = V.cnh("0000000000")
-    assert {:error, _} = V.cnh("9999999999")
-    assert {:error, _} = V.cnh("0265131640")
-    assert {:error, _} = V.cnh("0439732280")
+    refute V.cnh("")
+    refute V.cnh("0000000000")
+    refute V.cnh("9999999999")
+    refute V.cnh("0265131640")
+    refute V.cnh("0439732280")
 
 
 
     # cnpj
-    assert {:ok} = V.cnpj("32.063.364/0001-07")
-    assert {:ok} = V.cnpj("27.355.204/0001-00")
-    assert {:ok} = V.cnpj("36.310.327/0001-07")
-    assert {:ok} = V.cnpj("37550610000179")
-    assert {:ok} = V.cnpj("12774546000189")
+    assert V.cnpj("32.063.364/0001-07")
+    assert V.cnpj("27.355.204/0001-00")
+    assert V.cnpj("36.310.327/0001-07")
+    assert V.cnpj("37550610000179")
+    assert V.cnpj("12774546000189")
 
-    assert {:error, _} = V.cnpj("12.345.678/9012-34")
-    assert {:error, _} = V.cnpj("11.111.111111-11")
-    assert {:error, _} = V.cnpj("00000000000000")
-    assert {:error, _} = V.cnpj("99-010-0.")
+    refute V.cnpj("12.345.678/9012-34")
+    refute V.cnpj("11.111.111111-11")
+    refute V.cnpj("00000000000000")
+    refute V.cnpj("99-010-0.")
 
 
 
     # cpf
-    assert {:ok} = V.cpf("350.45261819")
-    assert {:ok} = V.cpf("693-319-118-40")
-    assert {:ok} = V.cpf("11598647644")
-    assert {:ok} = V.cpf("86734718697")
-    assert {:ok} = V.cpf("3.6.8.8.9.2.5.5.4.8.8")
+    assert V.cpf("350.45261819")
+    assert V.cpf("693-319-118-40")
+    assert V.cpf("11598647644")
+    assert V.cpf("86734718697")
+    assert V.cpf("3.6.8.8.9.2.5.5.4.8.8")
 
-    assert {:error, _} = V.cpf("")
-    assert {:error, _} = V.cpf("01234567890")
-    assert {:error, _} = V.cpf("000.000.000-00")
-    assert {:error, _} = V.cpf("111.222.444-05")
-    assert {:error, _} = V.cpf("999999999.99")
-    assert {:error, _} = V.cpf("8.8.8.8.8.8.8.8.8.8.8")
-    assert {:error, _} = V.cpf("693-319-110-40")
+    refute V.cpf("")
+    refute V.cpf("01234567890")
+    refute V.cpf("000.000.000-00")
+    refute V.cpf("111.222.444-05")
+    refute V.cpf("999999999.99")
+    refute V.cpf("8.8.8.8.8.8.8.8.8.8.8")
+    refute V.cpf("693-319-110-40")
 
 
 
     # consonant/1
-    assert {:ok} = V.consonant("w")
-    assert {:ok} = V.consonant("y")
-    assert {:ok} = V.consonant("qrst")
-    assert {:ok} = V.consonant("bcdfghklmnp")
+    assert V.consonant("w")
+    assert V.consonant("y")
+    assert V.consonant("qrst")
+    assert V.consonant("bcdfghklmnp")
 
-    assert {:error, _} = V.consonant("a")
-    assert {:error, _} = V.consonant("ul")
-    assert {:error, _} = V.consonant("aeiou")
-    assert {:error, _} = V.consonant("Foo")
+    refute V.consonant("a")
+    refute V.consonant("ul")
+    refute V.consonant("aeiou")
+    refute V.consonant("Foo")
 
 
 
     # consonant/2
-    assert {:ok} = V.consonant("www%", "%")
-    assert {:ok} = V.consonant("bcd_fgh", "_")
-    assert {:ok} = V.consonant("www www__www", " _")
+    assert V.consonant("www%", "%")
+    assert V.consonant("bcd_fgh", "_")
+    assert V.consonant("www www__www", " _")
 
-    assert {:error, _} = V.consonant("awww%", "%")
-    assert {:error, _} = V.consonant("uwwwq", "_")
+    refute V.consonant("awww%", "%")
+    refute V.consonant("uwwwq", "_")
 
 
 
     # even
-    assert {:ok} = V.even(0)
-    assert {:ok} = V.even(2)
-    assert {:ok} = V.even(4)
-    assert {:ok} = V.even(-2)
-    assert {:ok} = V.even(9999998)
+    assert V.even(0)
+    assert V.even(2)
+    assert V.even(4)
+    assert V.even(-2)
+    assert V.even(9999998)
 
-    assert {:error, _} = V.even(1)
-    assert {:error, _} = V.even(5)
-    assert {:error, _} = V.even(-3)
-    assert {:error, _} = V.even(9999999)
+    refute V.even(1)
+    refute V.even(5)
+    refute V.even(-3)
+    refute V.even(9999999)
 
 
 
     # lowercase
-    assert {:ok} = V.lowercase("")
-    assert {:ok} = V.lowercase("lowercase")
-    assert {:ok} = V.lowercase("lowercase-with-dashes")
-    assert {:ok} = V.lowercase("lowercase with spaces")
-    assert {:ok} = V.lowercase("lowercase with specials characters like ã ç ê")
+    assert V.lowercase("")
+    assert V.lowercase("lowercase")
+    assert V.lowercase("lowercase-with-dashes")
+    assert V.lowercase("lowercase with spaces")
+    assert V.lowercase("lowercase with specials characters like ã ç ê")
 
-    assert {:error, _} = V.lowercase("UPPERCASE")
-    assert {:error, _} = V.lowercase("CamelCase")
-    assert {:error, _} = V.lowercase("First Character Uppercase")
-    assert {:error, _} = V.lowercase("With Numbers 1 2 3")
+    refute V.lowercase("UPPERCASE")
+    refute V.lowercase("CamelCase")
+    refute V.lowercase("First Character Uppercase")
+    refute V.lowercase("With Numbers 1 2 3")
 
 
 
     # mac_address
-    assert {:ok} = V.mac_address("00:11:22:33:44:55")
-    assert {:ok} = V.mac_address("66-77-88-99-aa-bb")
-    assert {:ok} = V.mac_address("AF:0F:bd:12:44:ba")
+    assert V.mac_address("00:11:22:33:44:55")
+    assert V.mac_address("66-77-88-99-aa-bb")
+    assert V.mac_address("AF:0F:bd:12:44:ba")
 
-    assert {:error, _} = V.mac_address("")
-    assert {:error, _} = V.mac_address("00-1122:33:44:55")
+    refute V.mac_address("")
+    refute V.mac_address("00-1122:33:44:55")
 
 
 
     # no
-    assert {:ok} = V.no("N")
-    assert {:ok} = V.no("n")
-    assert {:ok} = V.no("Nay")
-    assert {:ok} = V.no("No")
-    assert {:ok} = V.no("Nope")
-    assert {:ok} = V.no("Not")
+    assert V.no("N")
+    assert V.no("n")
+    assert V.no("Nay")
+    assert V.no("No")
+    assert V.no("Nope")
+    assert V.no("Not")
 
-    assert {:error, _} = V.no("Donnot")
-    assert {:error, _} = V.no("Never")
-    assert {:error, _} = V.no("Niet")
-    assert {:error, _} = V.no("Noooooooo")
-    assert {:error, _} = V.no("Não")
-    assert {:error, _} = V.no("não")
+    refute V.no("Donnot")
+    refute V.no("Never")
+    refute V.no("Niet")
+    refute V.no("Noooooooo")
+    refute V.no("Não")
+    refute V.no("não")
 
 
 
     # odd
-    assert {:ok} = V.odd(1)
-    assert {:ok} = V.odd(5)
-    assert {:ok} = V.odd(-11)
-    assert {:ok} = V.odd(9999999)
+    assert V.odd(1)
+    assert V.odd(5)
+    assert V.odd(-11)
+    assert V.odd(9999999)
 
-    assert {:error, _} = V.odd(0)
-    assert {:error, _} = V.odd(8)
-    assert {:error, _} = V.odd(-100)
-    assert {:error, _} = V.odd(9999998)
+    refute V.odd(0)
+    refute V.odd(8)
+    refute V.odd(-100)
+    refute V.odd(9999998)
 
 
 
     # uppercase
-    assert {:ok} = V.uppercase("")
-    assert {:ok} = V.uppercase("UPPERCASE")
-    assert {:ok} = V.uppercase("UPPERCASE-WITH-DASHES")
-    assert {:ok} = V.uppercase("UPPERCASE WITH SPACES")
-    assert {:ok} = V.uppercase("UPPERCASE WITH NUMBERS 123")
+    assert V.uppercase("")
+    assert V.uppercase("UPPERCASE")
+    assert V.uppercase("UPPERCASE-WITH-DASHES")
+    assert V.uppercase("UPPERCASE WITH SPACES")
+    assert V.uppercase("UPPERCASE WITH NUMBERS 123")
 
-    assert {:error, _} = V.uppercase("lowercase")
-    assert {:error, _} = V.uppercase("CamelCase")
-    assert {:error, _} = V.uppercase("First Character Uppercase")
-    assert {:error, _} = V.uppercase("With Numbers 1 2 3")
+    refute V.uppercase("lowercase")
+    refute V.uppercase("CamelCase")
+    refute V.uppercase("First Character Uppercase")
+    refute V.uppercase("With Numbers 1 2 3")
 
 
 
     # vowel/1
-    assert {:ok} = V.vowel("a")
-    assert {:ok} = V.vowel("o")
-    assert {:ok} = V.vowel("u")
-    assert {:ok} = V.vowel("aeiou")
+    assert V.vowel("a")
+    assert V.vowel("o")
+    assert V.vowel("u")
+    assert V.vowel("aeiou")
 
-    assert {:error, _} = V.vowel("b")
-    assert {:error, _} = V.vowel("ul")
-    assert {:error, _} = V.vowel("16")
-    assert {:error, _} = V.vowel("\r")
+    refute V.vowel("b")
+    refute V.vowel("ul")
+    refute V.vowel("16")
+    refute V.vowel("\r")
 
 
 
     # vowel/2
-    assert {:ok} = V.vowel("aaaa==", "=")
-    assert {:ok} = V.vowel("aeoiu!!--", "!-")
+    assert V.vowel("aaaa==", "=")
+    assert V.vowel("aeoiu!!--", "!-")
 
-    assert {:error, _} = V.vowel("b==aaaa", "=")
-    assert {:error, _} = V.vowel("bc==aeoiu", "b!-")
+    refute V.vowel("b==aaaa", "=")
+    refute V.vowel("bc==aeoiu", "b!-")
 
 
 
     # yes
-    assert {:ok} = V.yes("Y")
-    assert {:ok} = V.yes("Yea")
-    assert {:ok} = V.yes("Yeah")
-    assert {:ok} = V.yes("Yep")
-    assert {:ok} = V.yes("Yes")
-    assert {:ok} = V.yes("yes")
+    assert V.yes("Y")
+    assert V.yes("Yea")
+    assert V.yes("Yeah")
+    assert V.yes("Yep")
+    assert V.yes("Yes")
+    assert V.yes("yes")
 
-    assert {:error, _} = V.yes("let's thrown an error")
-    assert {:error, _} = V.yes("Yydoesnotmatter")
-    assert {:error, _} = V.yes("Si")
-    assert {:error, _} = V.yes("Sim")
-    assert {:error, _} = V.yes("Yoo")
-    assert {:error, _} = V.yes("Yiip")
+    refute V.yes("let's thrown an error")
+    refute V.yes("Yydoesnotmatter")
+    refute V.yes("Si")
+    refute V.yes("Sim")
+    refute V.yes("Yoo")
+    refute V.yes("Yiip")
+
   end
 end

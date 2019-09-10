@@ -4,40 +4,40 @@ defmodule Validation.Rules.AlphaTest do
   doctest Validation
 
   test "valid alpha" do
-    assert {:ok} = V.validate("")
-    assert {:ok} = V.validate("matheus")
-    assert {:ok} = V.validate("gontijo")
-    assert {:ok} = V.validate("a")
-    assert {:ok} = V.validate("foobar")
+    assert V.validate("")
+    assert V.validate("matheus")
+    assert V.validate("gontijo")
+    assert V.validate("a")
+    assert V.validate("foobar")
   end
 
   test "valid with exclusion of characters" do
-    assert {:ok} = V.validate("gontijo_", "_")
-    assert {:ok} = V.validate("google.com", ".")
-    assert {:ok} = V.validate("matheus gontijo", " ")
-    assert {:ok} = V.validate("!@#$%^&*(){}abc", "!@#$%^&*(){}")
-    assert {:ok} = V.validate("[]?+=/\\-_|\",<>.abc", "[]?+=/\\-_|\",<>.")
-    assert {:ok} = V.validate("abc[]?+=/\\-_|\",<>. \t\n", "[]?+=/\\-_|\",<>. \t\n")
-    assert {:ok} = V.validate("a-123*d", "123-*")
+    assert V.validate("gontijo_", "_")
+    assert V.validate("google.com", ".")
+    assert V.validate("matheus gontijo", " ")
+    assert V.validate("!@#$%^&*(){}abc", "!@#$%^&*(){}")
+    assert V.validate("[]?+=/\\-_|\",<>.abc", "[]?+=/\\-_|\",<>.")
+    assert V.validate("abc[]?+=/\\-_|\",<>. \t\n", "[]?+=/\\-_|\",<>. \t\n")
+    assert V.validate("a-123*d", "123-*")
   end
 
   test "invalid alpha" do
-    assert {:error, _} = V.validate("123")
-    assert {:error, _} = V.validate("number 100%")
-    assert {:error, _} = V.validate("@#$")
-    assert {:error, _} = V.validate("_")
-    assert {:error, _} = V.validate("dgç")
-    assert {:error, _} = V.validate("\t")
-#    assert {:error, _} = V.validate("\n") @TODO: WHY IS BREAKLINE MATCHING?
-    assert {:error, _} = V.validate("\nabc")
-    assert {:error, _} = V.validate("\tdef")
-    assert {:error, _} = V.validate("\nabc \t")
-    assert {:error, _} = V.validate("matheus_gontijo")
+    refute V.validate("123")
+    refute V.validate("number 100%")
+    refute V.validate("@#$")
+    refute V.validate("_")
+    refute V.validate("dgç")
+    refute V.validate("\t")
+    #    refute V.validate("\n") @TODO: WHY IS BREAKLINE MATCHING?
+    refute V.validate("\nabc")
+    refute V.validate("\tdef")
+    refute V.validate("\nabc \t")
+    refute V.validate("matheus_gontijo")
   end
 
   test "invalid with exclusion of characters" do
-    assert {:error, _} = V.validate("gontijo_123", "$")
-    assert {:error, _} = V.validate("google.com321", "*")
-    assert {:error, _} = V.validate("matheus gontijo1", "_")
+    refute V.validate("gontijo_123", "$")
+    refute V.validate("google.com321", "*")
+    refute V.validate("matheus gontijo1", "_")
   end
 end

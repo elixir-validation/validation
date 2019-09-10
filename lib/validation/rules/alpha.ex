@@ -3,13 +3,7 @@ defmodule Validation.Rules.Alpha do
 
   @spec validate(String.t) :: Validation.default
   def validate(input) when is_binary(input) do
-    regex_validation = String.match?(input, ~r/^[a-zA-Z]*$/)
-
-    if regex_validation do
-      {:ok}
-    else
-      {:error, "Invalid alpha value."}
-    end
+    String.match?(input, ~r/^[a-zA-Z]*$/)
   end
 
   @spec validate(String.t, String.t) :: Validation.default
