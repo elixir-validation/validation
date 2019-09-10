@@ -5,10 +5,6 @@ defmodule Validation.Rules.Odd do
   def validate(input) when is_integer(input) do
     import Integer, only: [is_odd: 1]
 
-    if Integer.is_odd(input) do
-      {:ok}
-    else
-      {:error, "Invalid odd value."}
-    end
+    Integer.is_odd(input)
   end
 end

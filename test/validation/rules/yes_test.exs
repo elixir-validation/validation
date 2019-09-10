@@ -4,20 +4,20 @@ defmodule Validation.Rules.YesTest do
   doctest Validation
 
   test "valid yes" do
-    assert {:ok} = V.validate("Y")
-    assert {:ok} = V.validate("Yea")
-    assert {:ok} = V.validate("Yeah")
-    assert {:ok} = V.validate("Yep")
-    assert {:ok} = V.validate("Yes")
-    assert {:ok} = V.validate("yes")
+    assert V.validate("Y")
+    assert V.validate("Yea")
+    assert V.validate("Yeah")
+    assert V.validate("Yep")
+    assert V.validate("Yes")
+    assert V.validate("yes")
   end
 
   test "invalid yes" do
-    assert {:error, _} = V.validate("let's thrown an error")
-    assert {:error, _} = V.validate("Yydoesnotmatter")
-    assert {:error, _} = V.validate("Si")
-    assert {:error, _} = V.validate("Sim")
-    assert {:error, _} = V.validate("Yoo")
-    assert {:error, _} = V.validate("Yiip")
+    refute V.validate("let's thrown an error")
+    refute V.validate("Yydoesnotmatter")
+    refute V.validate("Si")
+    refute V.validate("Sim")
+    refute V.validate("Yoo")
+    refute V.validate("Yiip")
   end
 end

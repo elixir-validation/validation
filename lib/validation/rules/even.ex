@@ -5,10 +5,6 @@ defmodule Validation.Rules.Even do
   def validate(input) when is_integer(input) do
     import Integer, only: [is_even: 1]
 
-    if Integer.is_even(input) do
-      {:ok}
-    else
-      {:error, "Invalid even value."}
-    end
+    Integer.is_even(input)
   end
 end

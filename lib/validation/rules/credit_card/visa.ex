@@ -7,18 +7,7 @@ defmodule Validation.Rules.CreditCard.Visa do
     # only numbers
     input = Regex.replace(~r/\D/, input, "")
 
-    if credit_card_validation(input) and visa_validation(input) do
-      {:ok}
-    else
-      {:error, "Invalid credit card value."}
-    end
-  end
-
-  defp credit_card_validation(input) do
-    case CreditCard.validate(input) do
-      {:ok} -> true
-      {:error, _} -> false
-    end
+    CreditCard.validate(input) and visa_validation(input)
   end
 
   defp visa_validation(input) do

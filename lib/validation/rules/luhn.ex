@@ -30,13 +30,9 @@ defmodule Validation.Rules.Luhn do
         {i, sum}
       end)
 
-      if rem(sum, 10) == 0 do
-        {:ok}
-      else
-        error()
-      end
+      rem(sum, 10) == 0
     else
-      error()
+      false
     end
   end
 
@@ -46,9 +42,5 @@ defmodule Validation.Rules.Luhn do
     end)
 
     sum
-  end
-
-  defp error do
-    {:error, "Invalid Luhn value."}
   end
 end

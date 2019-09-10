@@ -4,21 +4,21 @@ defmodule Validation.Rules.NoTest do
   doctest Validation
 
   test "valid no" do
-    assert {:ok} = V.validate("N")
-    assert {:ok} = V.validate("n")
-    assert {:ok} = V.validate("Nay")
-    assert {:ok} = V.validate("Nix")
-    assert {:ok} = V.validate("No")
-    assert {:ok} = V.validate("Nope")
-    assert {:ok} = V.validate("Not")
+    assert V.validate("N")
+    assert V.validate("n")
+    assert V.validate("Nay")
+    assert V.validate("Nix")
+    assert V.validate("No")
+    assert V.validate("Nope")
+    assert V.validate("Not")
   end
 
   test "invalid no" do
-    assert {:error, _} = V.validate("Donnot")
-    assert {:error, _} = V.validate("Never")
-    assert {:error, _} = V.validate("Niet")
-    assert {:error, _} = V.validate("Noooooooo")
-    assert {:error, _} = V.validate("Não")
-    assert {:error, _} = V.validate("não")
+    refute V.validate("Donnot")
+    refute V.validate("Never")
+    refute V.validate("Niet")
+    refute V.validate("Noooooooo")
+    refute V.validate("Não")
+    refute V.validate("não")
   end
 end

@@ -4,22 +4,22 @@ defmodule Validation.Rules.LowercaseTest do
   doctest Validation
 
   test "valid lowercase" do
-    assert {:ok} = V.validate("")
-    assert {:ok} = V.validate("lowercase")
-    assert {:ok} = V.validate("lowercase-with-dashes")
-    assert {:ok} = V.validate("lowercase with spaces")
-    assert {:ok} = V.validate("lowercase with numbers 123")
-    assert {:ok} = V.validate("lowercase with specials characters like ã ç ê")
-    assert {:ok} = V.validate("with specials characters like # $ % & * +")
-    assert {:ok} = V.validate("τάχιστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός")
-    assert {:ok} = V.validate("42")
-    assert {:ok} = V.validate("!@#$%^")
+    assert V.validate("")
+    assert V.validate("lowercase")
+    assert V.validate("lowercase-with-dashes")
+    assert V.validate("lowercase with spaces")
+    assert V.validate("lowercase with numbers 123")
+    assert V.validate("lowercase with specials characters like ã ç ê")
+    assert V.validate("with specials characters like # $ % & * +")
+    assert V.validate("τάχιστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός")
+    assert V.validate("42")
+    assert V.validate("!@#$%^")
   end
 
   test "invalid lowercase" do
-    assert {:error, _} = V.validate("UPPERCASE")
-    assert {:error, _} = V.validate("CamelCase")
-    assert {:error, _} = V.validate("First Character Uppercase")
-    assert {:error, _} = V.validate("With Numbers 1 2 3")
+    refute V.validate("UPPERCASE")
+    refute V.validate("CamelCase")
+    refute V.validate("First Character Uppercase")
+    refute V.validate("With Numbers 1 2 3")
   end
 end

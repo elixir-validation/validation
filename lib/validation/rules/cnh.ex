@@ -6,9 +6,7 @@ defmodule Validation.Rules.CNH do
     # only numbers
     input = Regex.replace(~r/\D/, input, "")
 
-    if String.length(input) != 11 do
-      error_result()
-    else
+    if String.length(input) == 11 do
       # validate digits using a modulus 11 algorithm
       {c, s1, s2, p, input} = validate_digits(0, 0, 0, 9, input)
 
@@ -17,9 +15,7 @@ defmodule Validation.Rules.CNH do
       input_9 = String.at(input, 9) |> String.to_integer
       check   = if dv1 > 9, do: 0, else: dv1
 
-      if (input_9 != check) do
-        error_result()
-      else
+      if (input_9 == check) do
         dv2 = rem(s2, 11) - (if dv1 > 9, do: 2, else: 0);
 
         input_10 = String.at(input, 10) |> String.to_integer
@@ -31,12 +27,12 @@ defmodule Validation.Rules.CNH do
             if dv2 > 9, do: 0, else: dv2
           end
 
-        if input_10 == check do
-          {:ok}
-        else
-          error_result()
-        end
+        input_10 == check
+      else
+        false
       end
+    else
+      false
     end
   end
 
@@ -55,9 +51,5 @@ defmodule Validation.Rules.CNH do
     p = p - 1
 
     validate_digits(c, s1, s2, p, input)
-  end
-
-  defp error_result do
-    {:error, "Invalid CNH input."}
   end
 end

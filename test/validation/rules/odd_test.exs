@@ -4,19 +4,19 @@ defmodule Validation.Rules.OddTest do
   doctest Validation
 
   test "valid odd" do
-    assert {:ok} = V.validate(1)
-    assert {:ok} = V.validate(3)
-    assert {:ok} = V.validate(5)
-    assert {:ok} = V.validate(-1)
-    assert {:ok} = V.validate(9999999)
+    assert V.validate(1)
+    assert V.validate(3)
+    assert V.validate(5)
+    assert V.validate(-1)
+    assert V.validate(9999999)
   end
 
   test "invalid odd" do
-    assert {:error, _} = V.validate(0)
-    assert {:error, _} = V.validate(2)
-    assert {:error, _} = V.validate(4)
-    assert {:error, _} = V.validate(100)
-    assert {:error, _} = V.validate(-2)
-    assert {:error, _} = V.validate(9999998)
+    refute V.validate(0)
+    refute V.validate(2)
+    refute V.validate(4)
+    refute V.validate(100)
+    refute V.validate(-2)
+    refute V.validate(9999998)
   end
 end

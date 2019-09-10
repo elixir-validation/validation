@@ -3,11 +3,7 @@ defmodule Validation.Rules.Digit do
 
   @spec validate(String.t) :: Validation.default
   def validate(input) when is_binary(input) do
-    if String.match?(input, ~r/^[0-9]+$/) do
-      {:ok}
-    else
-      {:error, "Invalid digit value."}
-    end
+    String.match?(input, ~r/^[0-9]+$/)
   end
 
   @spec validate(String.t, String.t) :: Validation.default

@@ -3,13 +3,7 @@ defmodule Validation.Rules.Alphanumeric do
 
   @spec validate(String.t) :: Validation.default
   def validate(input) when is_binary(input) do
-    regex_validation = String.match?(input, ~r/^[a-zA-Z0-9]*$/)
-
-    if regex_validation do
-      {:ok}
-    else
-      {:error, "Invalid alphanumeric value."}
-    end
+    String.match?(input, ~r/^[a-zA-Z0-9]*$/)
   end
 
   @spec validate(String.t, String.t) :: Validation.default

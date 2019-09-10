@@ -3,13 +3,7 @@ defmodule Validation.Rules.Vowel do
 
   @spec validate(String.t) :: Validation.default
   def validate(input) when is_binary(input) do
-    regex_validation = String.match?(input, ~r/^[aeiouAEIOU]*$/)
-
-    if regex_validation do
-      {:ok}
-    else
-      {:error, "Invalid vowel value."}
-    end
+    String.match?(input, ~r/^[aeiouAEIOU]*$/)
   end
 
   @spec validate(String.t, String.t) :: Validation.default

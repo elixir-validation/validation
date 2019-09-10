@@ -4,9 +4,6 @@ defmodule Validation.Rules.CreditCard do
 
   @spec validate(String.t) :: Validation.default
   def validate(input) when is_binary(input) do
-    case Luhn.validate(input) do
-      {:ok} -> {:ok}
-      {:error, _} -> {:error, "Invalid credit card value."}
-    end
+    Luhn.validate(input)
   end
 end

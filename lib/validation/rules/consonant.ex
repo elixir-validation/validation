@@ -3,13 +3,7 @@ defmodule Validation.Rules.Consonant do
 
   @spec validate(String.t) :: Validation.default
   def validate(input) when is_binary(input) do
-    regex_validation = String.match?(input, ~r/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])*$/)
-
-    if regex_validation do
-      {:ok}
-    else
-      {:error, "Invalid consonant value."}
-    end
+    String.match?(input, ~r/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])*$/)
   end
 
   @spec validate(String.t, String.t) :: Validation.default

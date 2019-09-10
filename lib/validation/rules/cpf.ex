@@ -9,9 +9,7 @@ defmodule Validation.Rules.CPF do
     # only numbers
     c = Regex.replace(~r/\D/, input, "")
 
-    if not initial_validation(c) do
-      error_result()
-    else
+    if initial_validation(c) do
       {n, s, i, c} = loop_check(0, 10, 0, c)
 
       n = rem(n, 11)
@@ -19,9 +17,7 @@ defmodule Validation.Rules.CPF do
       c_9   = String.at(c, 9) |> String.to_integer
       check = if n < 2, do: 0, else: 11 - n
 
-      if c_9 != check do
-        error_result()
-      else
+      if c_9 == check do
         {n, s, i, c} = loop_check(0, 11, 0, c)
 
         n = rem(n, 11)
@@ -29,12 +25,12 @@ defmodule Validation.Rules.CPF do
         c_10  = String.at(c, 10) |> String.to_integer
         check = if n < 2, do: 0, else: 11 - n
 
-        if c_10 == check do
-          {:ok}
-        else
-          error_result()
-        end
+        c_10 == check
+      else
+        false
       end
+    else
+      false
     end
   end
 
@@ -56,10 +52,6 @@ defmodule Validation.Rules.CPF do
 
   defp validate_invalid_values(input) do
     input != "01234567890"
-  end
-
-  defp error_result do
-    {:error, "Invalid CPF input."}
   end
 
   defp loop_check(n, s, i, c) when s == 1 do

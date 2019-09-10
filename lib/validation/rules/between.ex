@@ -20,10 +20,6 @@ defmodule Validation.Rules.Between do
       raise "Minimum param can't be greater than maximum param."
     end
 
-    if value >= min and value <= max do
-      {:ok}
-    else
-      {:error, "Invalid range."}
-    end
+    value >= min and value <= max
   end
 end

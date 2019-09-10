@@ -11,9 +11,7 @@ defmodule Validation.Rules.CNPJ do
 
     bases = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
 
-    if not validate_digits_sum(digits) || String.length(digits) != 14 do
-      error_result()
-    else
+    if validate_digits_sum(digits) and String.length(digits) == 14 do
       {_, n} = Enum.map_reduce(0..11, 0, fn i, n ->
         digit_item = String.at(digits, i) |> String.to_integer
         base_item  = Enum.at(bases, i + 1)
@@ -28,9 +26,7 @@ defmodule Validation.Rules.CNPJ do
       digit_12 = String.at(digits, 12) |> String.to_integer
       check    = if n < 2, do: 0 , else: 11 - n
 
-      if digit_12 != check do
-        error_result()
-      else
+      if digit_12 == check do
         _ = """
         $check = ($n %= 11) < 2 ? 0 : 11 - $n;
         return $digits[13] == $check;
@@ -49,17 +45,13 @@ defmodule Validation.Rules.CNPJ do
         digit_13 = String.at(digits, 13) |> String.to_integer
         check    = if n < 2, do: 0, else: 11 - n
 
-        if digit_13 == check do
-          {:ok}
-        else
-          error_result()
-        end
+        digit_13 == check
+      else
+        false
       end
+    else
+      false
     end
-  end
-
-  defp error_result do
-    {:error, "Invalid CNPJ input."}
   end
 
   defp validate_digits_sum(digits_string) do

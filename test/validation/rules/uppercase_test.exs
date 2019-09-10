@@ -4,22 +4,22 @@ defmodule Validation.Rules.UppercaseTest do
   doctest Validation
 
   test "valid uppercase" do
-    assert {:ok} = V.validate("")
-    assert {:ok} = V.validate("UPPERCASE")
-    assert {:ok} = V.validate("UPPERCASE-WITH-DASHES")
-    assert {:ok} = V.validate("UPPERCASE WITH SPACES")
-    assert {:ok} = V.validate("UPPERCASE WITH NUMBERS 123")
-    assert {:ok} = V.validate("UPPERCASE WITH SPECIALS CHARACTERS LIKE Ã Ç Ê")
-    assert {:ok} = V.validate("WITH SPECIALS CHARACTERS LIKE # $ % & * +")
-    assert {:ok} = V.validate("ΤΆΧΙΣΤΗ ΑΛΏΠΗΞ ΒΑΦΉΣ ΨΗΜΈΝΗ ΓΗ, ΔΡΑΣΚΕΛΊΖΕΙ ΥΠΈΡ ΝΩΘΡΟΎ ΚΥΝΌΣ")
-    assert {:ok} = V.validate("42")
-    assert {:ok} = V.validate("!@#$%^")
+    assert V.validate("")
+    assert V.validate("UPPERCASE")
+    assert V.validate("UPPERCASE-WITH-DASHES")
+    assert V.validate("UPPERCASE WITH SPACES")
+    assert V.validate("UPPERCASE WITH NUMBERS 123")
+    assert V.validate("UPPERCASE WITH SPECIALS CHARACTERS LIKE Ã Ç Ê")
+    assert V.validate("WITH SPECIALS CHARACTERS LIKE # $ % & * +")
+    assert V.validate("ΤΆΧΙΣΤΗ ΑΛΏΠΗΞ ΒΑΦΉΣ ΨΗΜΈΝΗ ΓΗ, ΔΡΑΣΚΕΛΊΖΕΙ ΥΠΈΡ ΝΩΘΡΟΎ ΚΥΝΌΣ")
+    assert V.validate("42")
+    assert V.validate("!@#$%^")
   end
 
   test "invalid uppercase" do
-    assert {:error, _} = V.validate("lowercase")
-    assert {:error, _} = V.validate("CamelCase")
-    assert {:error, _} = V.validate("First Character Uppercase")
-    assert {:error, _} = V.validate("With Numbers 1 2 3")
+    refute V.validate("lowercase")
+    refute V.validate("CamelCase")
+    refute V.validate("First Character Uppercase")
+    refute V.validate("With Numbers 1 2 3")
   end
 end
