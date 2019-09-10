@@ -1,24 +1,5 @@
 defmodule Validation.Rules.CPF do
 
-  @doc """
-  Validates whether the input is a valid CPF (brazilian ID).
-
-      # {:ok}
-      V.cpf("350.45261819")
-      V.cpf("693-319-118-40")
-      V.cpf("11598647644")
-      V.cpf("86734718697")
-      V.cpf("3.6.8.8.9.2.5.5.4.8.8")
-
-      # {:error, message}
-      V.cpf("")
-      V.cpf("01234567890")
-      V.cpf("000.000.000-00")
-      V.cpf("111.222.444-05")
-      V.cpf("999999999.99")
-      V.cpf("8.8.8.8.8.8.8.8.8.8.8")
-      V.cpf("693-319-110-40")
-  """
   @spec validate(String.t) :: Validation.default
   def validate(input) when is_binary(input) do
     # Ugly code. But it works.

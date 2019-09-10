@@ -1,16 +1,5 @@
 defmodule Validation.Rules.Between do
 
-  @doc """
-  Validates ranges.
-
-      # {:ok}
-      V.between(15, 10, 20)
-      V.between(70, 0, 100)
-
-      # {:error, message}
-      V.between(15, 20, 30)
-      V.between(70, 300, 999)
-  """
   @spec validate(number | String.t, number | String.t, number | String.t) :: Validation.default
   def validate(value, min, max) when
        (is_number(value) and is_number(min) and is_number(max))

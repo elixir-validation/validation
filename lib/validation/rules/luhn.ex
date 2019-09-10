@@ -1,8 +1,5 @@
 defmodule Validation.Rules.Luhn do
 
-  @doc """
-  Validates whether the input is a valid Luhn.
-  """
   @spec validate(String.t) :: Validation.default
   def validate(input) when is_binary(input) do
     """
