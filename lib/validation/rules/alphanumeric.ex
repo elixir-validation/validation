@@ -1,4 +1,5 @@
 defmodule Validation.Rules.Alphanumeric do
+  @moduledoc false
 
   @spec validate(String.t) :: Validation.default
   def validate(input) when is_binary(input) do

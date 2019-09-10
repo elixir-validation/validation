@@ -1,4 +1,5 @@
 defmodule Validation.Rules.No do
+  @moduledoc false
 
   # @TODO: support other languages
 

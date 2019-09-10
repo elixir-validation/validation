@@ -1,4 +1,5 @@
 defmodule Validation.Rules.Between do
+  @moduledoc false
 
   @spec validate(number | String.t, number | String.t, number | String.t) :: Validation.default
   def validate(value, min, max) when

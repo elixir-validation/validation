@@ -1,23 +1,20 @@
 defmodule Validation.MixProject do
   use Mix.Project
 
+  @version "0.0.1-dev"
+
   def project do
     [
       app: :validation,
-      version: "0.1.0",
+      version: "0.0.1-dev",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      package: package(),
 
       # Docs
       name: "Elixir Validation",
-      source_url: "https://github.com/elixir-validation/validation",
-      homepage_url: "http://elixir-validation.com",
-      docs: [
-        main: "ElixirValidation",
-        logo: "logo.png",
-        extras: ["README.md"]
-      ]
+      docs: docs(),
     ]
   end
 
@@ -28,10 +25,28 @@ defmodule Validation.MixProject do
     ]
   end
 
+  defp package do
+    [
+      maintainers: ["Matheus Gontijo"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/elixir-validation/validation"}
+    ]
+  end
+
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
+    ]
+  end
+
+  defp docs do
+    [
+      main: "Elixir Validation",
+      source_ref: "v#{@version}",
+      canonical: "http://hexdocs.pm/validation",
+      logo: "logo.png",
+      source_url: "https://github.com/elixir-validation/validation",
     ]
   end
 end

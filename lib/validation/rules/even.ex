@@ -1,4 +1,5 @@
 defmodule Validation.Rules.Even do
+  @moduledoc false
 
   @spec validate(Integer.t) :: Validation.default
   def validate(input) when is_integer(input) do
