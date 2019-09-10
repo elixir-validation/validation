@@ -1,7 +1,21 @@
 defmodule Validation.Rules.CNH do
 
   @doc """
-  Validates whether the input is a valid CNH.
+  Validates whether the input is a valid CNH (brazilian driver license ID).
+
+      # {:ok}
+      V.cnh("02650306461")
+      V.cnh("04397322870")
+      V.cnh("04375701302")
+      V.cnh("02996843266")
+      V.cnh("04375700501")
+
+      # {:error, message}
+      V.cnh("")
+      V.cnh("0000000000")
+      V.cnh("9999999999")
+      V.cnh("0265131640")
+      V.cnh("0439732280")
   """
   @spec validate(String.t) :: Validation.default
   def validate(input) when is_binary(input) do
@@ -42,11 +56,11 @@ defmodule Validation.Rules.CNH do
     end
   end
 
-  def validate_digits(c, s1, s2, p, input) when c == 9 do
+  defp validate_digits(c, s1, s2, p, input) when c == 9 do
     {c, s1, s2, p, input}
   end
 
-  def validate_digits(c, s1, s2, p, input) do
+  defp validate_digits(c, s1, s2, p, input) do
     s1_digit = String.to_integer(String.at(input, c)) * p
     s2_digit = String.to_integer(String.at(input, c)) * (10 - p)
 

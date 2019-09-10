@@ -6,18 +6,16 @@ defmodule Validation.Rules.Luhn do
   @spec validate(String.t) :: Validation.default
   def validate(input) when is_binary(input) do
     """
-    $sum = 0;
-    $digits = array_map('intval', str_split($input));
-    $numDigits = count($digits);
-    $parity = $numDigits % 2;
     for ($i = 0; $i < $numDigits; ++$i) {
         $digit = $digits[$i];
+
         if ($parity == ($i % 2)) {
             $digit <<= 1;
             if (9 < $digit) {
                 $digit = $digit - 9;
             }
         }
+
         $sum += $digit;
     }
 
@@ -28,6 +26,12 @@ defmodule Validation.Rules.Luhn do
 
     # only numbers
     digits = Regex.replace(~r/\D/, input, "")
+
+    num_digits = String.length(digits)
+    parity = rem(num_digits, 2)
+
+
+
 
 
   end

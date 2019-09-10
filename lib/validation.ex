@@ -335,7 +335,7 @@ defmodule Validation do
       V.vowel("b")
       V.vowel("ul")
       V.vowel("16")
-      V.vowel("\r")
+      V.vowel("\\r")
   """
   @spec vowel(String.t) :: Validation.default
   def vowel(input) when is_binary(input) do
@@ -343,7 +343,7 @@ defmodule Validation do
   end
 
   @doc """
-  Validates whether the input is has only vowels.
+  Validates whether the input is has only vowels, excluding specific characters.
 
       # {:ok}
       V.vowel("aaaa==", "=")
@@ -370,7 +370,7 @@ defmodule Validation do
       V.yes("yes")
 
       # {:error, message}
-      V.yes("let"s thrown an error")
+      V.yes("let\\"s thrown an error")
       V.yes("Yydoesnotmatter")
       V.yes("Si")
       V.yes("Sim")

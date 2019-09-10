@@ -1,7 +1,20 @@
 defmodule Validation.Rules.CNPJ do
 
   @doc """
-  Validates whether the input is a valid CNPJ.
+  Validates whether the input is a valid CNPJ (brazilian company ID).
+
+      # {:ok}
+      V.cnpj("32.063.364/0001-07")
+      V.cnpj("27.355.204/0001-00")
+      V.cnpj("36.310.327/0001-07")
+      V.cnpj("37550610000179")
+      V.cnpj("12774546000189")
+
+      # {:error, message}
+      V.cnpj("12.345.678/9012-34")
+      V.cnpj("11.111.111/1111-11")
+      V.cnpj("00000000000000")
+      V.cnpj("99-010-0.")
   """
   @spec validate(String.t) :: Validation.default
   def validate(input) when is_binary(input) do
