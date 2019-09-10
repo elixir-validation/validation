@@ -5,9 +5,11 @@ defmodule ValidationTest do
 
   @doc """
   This test has two purposes:
-    - Validate documentation: it should reflect the very same values on documentation
-    - Validate wrapper: the validation module is just a wrapper, and it should also
-    test in order to make sure the API works as expected.
+
+  1) Validate documentation: it should reflect the very same values on documentation
+
+  2) Validate wrapper: the validation module is just a wrapper to the rules,
+  and it should also be covered by tests, in order to make sure the API works as expected.
   """
   test "valid documentation" do
     # alpha/1

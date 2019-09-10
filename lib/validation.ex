@@ -6,13 +6,6 @@ defmodule Validation do
   @TODO: update docs.. wrapper to the rules
   """
 
-
-
-
-
-
-
-
   @doc """
   Validates whether the input is alpha.
 
@@ -23,7 +16,7 @@ defmodule Validation do
       V.alpha("doe")
       V.alpha("foobar")
 
-      # {:error, _message}
+      # {:error, message}
       V.alpha("123")
       V.alpha("number 100%")
       V.alpha("@#$")
@@ -43,7 +36,7 @@ defmodule Validation do
       V.alpha("google.com", ".")
       V.alpha("john doe", " ")
 
-      # {:error, _message}
+      # {:error, message}
       V.alpha("john_123", "$")
       V.alpha("google.com321", "*")
       V.alpha("john doe1", "_")
@@ -60,7 +53,7 @@ defmodule Validation do
       V.alphanumeric("foo123");
       V.alphanumeric("100number");
 
-      # {:error, _message}
+      # {:error, message}
       V.alphanumeric("number 100%");
       V.alphanumeric("foo_bar");
   """
@@ -76,7 +69,7 @@ defmodule Validation do
       V.alphanumeric("foo 123", " ");
       V.alphanumeric("foo_123", "_");
 
-      # {:error, _message}
+      # {:error, message}
       V.alphanumeric("number 100%", "%");
       V.alphanumeric("foo_bar", "%");
   """
@@ -92,7 +85,7 @@ defmodule Validation do
       V.between(15, 10, 20)
       V.between(70, 0, 100)
 
-      # {:error, _message}
+      # {:error, message}
       V.between(15, 20, 30)
       V.between(70, 300, 999)
   """
@@ -111,7 +104,7 @@ defmodule Validation do
       V.cnh("02996843266")
       V.cnh("04375700501")
 
-      # {:error, _message}
+      # {:error, message}
       V.cnh("")
       V.cnh("0000000000")
       V.cnh("9999999999")
@@ -133,7 +126,7 @@ defmodule Validation do
       V.cnpj("37550610000179")
       V.cnpj("12774546000189")
 
-      # {:error, _message}
+      # {:error, message}
       V.cnpj("12.345.678/9012-34")
       V.cnpj("11.111.111/1111-11")
       V.cnpj("00000000000000")
@@ -154,7 +147,7 @@ defmodule Validation do
       V.cpf("86734718697")
       V.cpf("3.6.8.8.9.2.5.5.4.8.8")
 
-      # {:error, _message}
+      # {:error, message}
       V.cpf("")
       V.cpf("01234567890")
       V.cpf("000.000.000-00")
@@ -177,7 +170,7 @@ defmodule Validation do
       V.consonant("qrst")
       V.consonant("bcdfghklmnp")
 
-      # {:error, _message}
+      # {:error, message}
       V.consonant("a")
       V.consonant("ul")
       V.consonant("aeiou")
@@ -196,7 +189,7 @@ defmodule Validation do
       V.consonant("bcd_fgh", "_")
       V.consonant("www www__www", " _")
 
-      # {:error, _message}
+      # {:error, message}
       V.consonant("awww%", "%")
       V.consonant("uwwwq", "_")
   """
@@ -215,7 +208,7 @@ defmodule Validation do
       V.even(-2)
       V.even(9999998)
 
-      # {:error, _message}
+      # {:error, message}
       V.even(1)
       V.even(5)
       V.even(-3)
@@ -236,7 +229,7 @@ defmodule Validation do
       V.lowercase("lowercase with spaces")
       V.lowercase("lowercase with specials characters like ã ç ê")
 
-      # {:error, _message}
+      # {:error, message}
       V.lowercase("UPPERCASE")
       V.lowercase("CamelCase")
       V.lowercase("First Character Uppercase")
@@ -255,7 +248,7 @@ defmodule Validation do
       V.mac_address("66-77-88-99-aa-bb")
       V.mac_address("AF:0F:bd:12:44:ba")
 
-      # {:error, _message}
+      # {:error, message}
       V.mac_address("")
       V.mac_address("00-1122:33:44:55")
   """
@@ -275,7 +268,7 @@ defmodule Validation do
       V.no("Nope")
       V.no("Not")
 
-      # {:error, _message}
+      # {:error, message}
       V.no("Donnot")
       V.no("Never")
       V.no("Niet")
@@ -297,7 +290,7 @@ defmodule Validation do
       V.odd(-11)
       V.odd(9999999)
 
-      # {:error, _message}
+      # {:error, message}
       V.odd(0)
       V.odd(8)
       V.odd(-100)
@@ -318,7 +311,7 @@ defmodule Validation do
       V.uppercase("UPPERCASE WITH SPACES")
       V.uppercase("UPPERCASE WITH NUMBERS 123")
 
-      # {:error, _message}
+      # {:error, message}
       V.uppercase("lowercase")
       V.uppercase("CamelCase")
       V.uppercase("First Character Uppercase")
@@ -338,7 +331,7 @@ defmodule Validation do
       V.vowel("u")
       V.vowel("aeiou")
 
-      # {:error, _message}
+      # {:error, message}
       V.vowel("b")
       V.vowel("ul")
       V.vowel("16")
@@ -356,7 +349,7 @@ defmodule Validation do
       V.vowel("aaaa==", "=")
       V.vowel("aeoiu!!--", "!-")
 
-      # {:error, _message}
+      # {:error, message}
       V.vowel("b==aaaa", "=")
       V.vowel("bc==aeoiu", "b!-")
   """
@@ -376,7 +369,7 @@ defmodule Validation do
       V.yes("Yes")
       V.yes("yes")
 
-      # {:error, _message}
+      # {:error, message}
       V.yes("let"s thrown an error")
       V.yes("Yydoesnotmatter")
       V.yes("Si")

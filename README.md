@@ -7,6 +7,7 @@
 <!-- ![Killing Flash](https://img.shields.io/badge/killing-flash-brightgreen.svg?style=flat) -->
 
 > **Easy. Simple. Powerful. 💪**
+>
 > 👉 The best Elixir Validation library with +99<!-- @TODO: update this number --> fully tested rules.
 
 # Demo
@@ -14,27 +15,21 @@
 <!-- @TODO: update code examples -->
 
 ```elixir
-defmodule Foo do
-  alias Validation, as: V
+# alias Validation, as: V
 
-  def bar do
-
-  	# valid data will return {:ok}
-  	V.email("hello@gmail.com")
-  	V.credit_card("4882743696073832")
-  	V.iban("DE89370400440532013000")
-  	V.consonants("bcdfgh")
-  	V.country_code("US")
-  	V.mac_address("12-77-0E-42-E4-65")
+# valid data will return {:ok}
+V.email("hello@gmail.com")
+V.credit_card("4882743696073832")
+V.iban("DE89370400440532013000")
+V.consonants("bcdfgh")
+V.country_code("US")
+V.mac_address("12-77-0E-42-E4-65")
 
 
-  	# invalid data will return {:error, "error message"}
-  	V.size("10GGG")            # could be something like "10G"
-  	V.postcode.uk("88888888")  # could be something like "SW1A 2BJ"
-  	V.is_odd(2)                # could be something like 3 or 5... 
-
-  end
-end
+# invalid data will return {:error, "error message"}
+V.size("10GGG")            # could be something like "10G"
+V.postcode.uk("88888888")  # could be something like "SW1A 2BJ"
+V.is_odd(2)                # could be something like 3 or 5... 
 ```
 
 ## Install
@@ -72,12 +67,16 @@ To more information, please access the [full documention](http://google.com/). <
 
 [Check the list of contributors](http://google.com/)
 
-- *Do you want a new validation rule?* Feel free to contribute by forking the project and making a pull request.
-- *Did you find a bug?* Please report on the [issues](http://google.com)<!-- @TODO: update link --> proving high level of detail. Additionally, providing a failing test would help solve the issue.
+- *Do you want a new validation rule?*
+    - Feel free to contribute by forking the project and making a pull request.
+
+
+- *Did you find a bug?*
+    - Please report on [issues](http://google.com)<!-- @TODO: update link --> proving high level of detail. Additionally, providing a failing test would help solve the issue.
 
 # Inspiration
 
-We highly appreciate the [Respect Validation](https://github.com/Respect/Validation) project. Elixir Validation was completely based upon this incredible project. Kudos for all contributors.
+We highly appreciate ❤️ the [Respect\Validation](https://github.com/Respect/Validation) project. Elixir Validation was **completely** based upon this incredible project. Kudos for all contributors.
 
 ## License
 
