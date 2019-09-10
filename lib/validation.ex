@@ -61,8 +61,8 @@ defmodule Validation do
       V.alphanumeric("100number");
 
       # {:error, _message}
-      V.alphanumeric('number 100%');
-      V.alphanumeric('foo_bar');
+      V.alphanumeric("number 100%");
+      V.alphanumeric("foo_bar");
   """
   @spec alphanumeric(String.t) :: default
   def alphanumeric(input) when is_binary(input) do
@@ -198,7 +198,7 @@ defmodule Validation do
 
       # {:error, _message}
       V.consonant("awww%", "%")
-      V.consonant("wwwq", "_")
+      V.consonant("uwwwq", "_")
   """
   @spec consonant(String.t, String.t) :: Validation.default
   def consonant(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
@@ -377,7 +377,7 @@ defmodule Validation do
       V.yes("yes")
 
       # {:error, _message}
-      V.yes("let's thrown an error")
+      V.yes("let"s thrown an error")
       V.yes("Yydoesnotmatter")
       V.yes("Si")
       V.yes("Sim")
