@@ -49,8 +49,8 @@ def deps do
 end
 ```
 
-Compatibility:
-- Elixir 1.3+ <!-- @TODO: update this -->
+- Compatibility:
+  - Elixir 1.3+ <!-- @TODO: update this -->
 
 ## Documentation
 
