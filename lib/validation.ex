@@ -403,6 +403,26 @@ defmodule Validation do
   end
 
   @doc """
+  Validates a language code based on ISO 639:
+
+      # true
+      V.language_code("en", :alpha2)
+      V.language_code("pt", :alpha2)
+      V.language_code("it", :alpha2)
+      V.language_code("eng", :alpha3)
+      V.language_code("por", :alpha3)
+      V.language_code("ita", :alpha3)
+
+      # false
+      V.language_code("hi", :alpha2)
+      V.language_code("foo", :alpha3)
+  """
+  @spec language_code(String.t, atom) :: boolean
+  def language_code(input, type \\ :alpha2) when is_binary(input) and is_atom(type) do
+    Validation.Rules.LanguageCode.validate(input, type)
+  end
+
+  @doc """
   Validates whether the input is lowercase.
 
       # true

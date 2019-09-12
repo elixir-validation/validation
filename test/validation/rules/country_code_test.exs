@@ -16,6 +16,7 @@ defmodule Validation.Rules.CountryCodeTest do
   end
 
   test "invalid country code" do
+    refute V.validate("", :alpha2)
     refute V.validate("USA", :alpha2)
     refute V.validate("US",  :alpha3)
     refute V.validate("000", :numeric)
@@ -23,7 +24,7 @@ defmodule Validation.Rules.CountryCodeTest do
 
   test "exception - Invalid type param. It should be either: :alpha2, :alpha3 or :numeric." do
     assert_raise RuntimeError, "Invalid type param. It should be either: :alpha2, :alpha3 or :numeric.", fn ->
-      V.validate("BRAAAA", :unknown_type)
+      V.validate("BR", :unknown_type)
     end
   end
 end

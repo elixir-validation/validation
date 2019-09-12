@@ -272,6 +272,19 @@ defmodule ValidationTest do
 
 
 
+    # language_code
+    V.language_code("en",  :alpha2)
+    V.language_code("pt",  :alpha2)
+    V.language_code("it",  :alpha2)
+    V.language_code("eng", :alpha3)
+    V.language_code("por", :alpha3)
+    V.language_code("ita", :alpha3)
+
+    V.language_code("hi",  :alpha2)
+    V.language_code("foo", :alpha3)
+
+
+
     # lowercase
     assert V.lowercase("")
     assert V.lowercase("lowercase")
