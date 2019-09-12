@@ -12,7 +12,7 @@ defmodule ValidationTest do
   and it should also be covered by tests, in order to make sure the API works as expected.
   But keep in mind that the main tests are not found here.
   """
-  test "validate documentation" do
+  test "validate documentation and wrappers" do
 
     # alpha/1
     assert V.alpha("")
@@ -347,6 +347,17 @@ defmodule ValidationTest do
     refute V.odd(8)
     refute V.odd(-100)
     refute V.odd(9999998)
+
+
+
+    # tld
+    V.tld("com")
+    V.tld("br")
+    V.tld("cafe")
+    V.tld("democrat")
+
+    V.tld("1.0")
+    V.tld("wrongtld")
 
 
 

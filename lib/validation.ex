@@ -571,6 +571,24 @@ defmodule Validation do
   end
 
   @doc """
+  Validates a top-level domain according to [IANA](https://data.iana.org/TLD/tlds-alpha-by-domain.txt).
+
+      # true
+      V.tld("com")
+      V.tld("br")
+      V.tld("cafe")
+      V.tld("democrat")
+
+      # false
+      V.tld("1.0")
+      V.tld("wrongtld")
+  """
+  @spec tld(String.t) :: boolean
+  def tld(input) when is_binary(input) do
+    Validation.Rules.Tld.validate(input)
+  end
+
+  @doc """
   Validates whether the input is uppercase.
 
       # true
