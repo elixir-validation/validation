@@ -136,7 +136,7 @@ defmodule Validation do
   end
 
   @doc """
-  Validates an ISO country code like US, DE or BR.
+  Validates country codes like US, DE or BR according to [ISO 639](https://en.wikipedia.org/wiki/ISO_639).
 
       # true
       V.country_code("BR", :alpha2)
@@ -149,6 +149,8 @@ defmodule Validation do
 
       # false
       V.country_code("BRAAAA", :unknown_type)
+
+  This rules uses data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
   """
   @spec country_code(String.t, atom) :: boolean
   def country_code(input, type \\ :alpha2) when is_binary(input) and is_atom(type) do
@@ -403,9 +405,12 @@ defmodule Validation do
   end
 
   @doc """
-  Validates a language code based on ISO 639:
+  Validates a language code according to [ISO 639](https://en.wikipedia.org/wiki/ISO_639):
 
       # true
+      V.language_code("en")
+      V.language_code("pt")
+
       V.language_code("en", :alpha2)
       V.language_code("pt", :alpha2)
       V.language_code("it", :alpha2)
@@ -416,6 +421,9 @@ defmodule Validation do
       # false
       V.language_code("hi", :alpha2)
       V.language_code("foo", :alpha3)
+
+  You can choose between alpha-2 and alpha-3, alpha-2 is set by default.
+  This rules uses data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
   """
   @spec language_code(String.t, atom) :: boolean
   def language_code(input, type \\ :alpha2) when is_binary(input) and is_atom(type) do
@@ -520,6 +528,26 @@ defmodule Validation do
   @spec odd(Integer.t) :: boolean
   def odd(input) when is_integer(input) do
     Validation.Rules.Odd.validate(input)
+  end
+
+  @doc """
+  Validates subdivision country codes (states, provincies, territories and other sub regions) according to [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2).
+
+      # true
+      V.subdivision_code("US", "TX")
+      V.subdivision_code("BR", "SP")
+      V.subdivision_code("CA", "BC")
+
+      # false
+      V.subdivision_code("US", "AA")
+      V.subdivision_code("BR", "BB")
+      V.subdivision_code("CA", "CC")
+
+  This rules uses data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
+  """
+  @spec subdivision_code(String.t, String.t) :: boolean
+  def subdivision_code(country, subdivision) when is_binary(country) and is_binary(subdivision) do
+    Validation.Rules.SubdivisionCode.validate(country, subdivision)
   end
 
   @doc """

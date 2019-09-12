@@ -353,6 +353,17 @@ defmodule ValidationTest do
 
 
 
+    # subdivision_code
+    V.subdivision_code("US", "TX")
+    V.subdivision_code("BR", "SP")
+    V.subdivision_code("CA", "BC")
+
+    V.subdivision_code("US", "AA")
+    V.subdivision_code("BR", "BB")
+    V.subdivision_code("CA", "CC")
+
+
+
     # vowel/1
     assert V.vowel("a")
     assert V.vowel("o")
