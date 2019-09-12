@@ -17,7 +17,7 @@
 ```elixir
 # alias Validation, as: V
 
-# valid data will return {:ok}
+# valid data will return true
 V.email("hello@gmail.com")
 V.credit_card("4882743696073832")
 V.iban("DE89370400440532013000")
@@ -26,7 +26,7 @@ V.country_code("US")
 V.mac_address("12-77-0E-42-E4-65")
 
 
-# invalid data will return {:error, "error message"}
+# invalid data will return false
 V.size("10GGG")            # could be something like "10G"
 V.postcode.uk("88888888")  # could be something like "SW1A 2BJ"
 V.is_odd(2)                # could be something like 3 or 5... 
@@ -44,8 +44,7 @@ def deps do
 end
 ```
 
-- Compatibility:
-  - Elixir 1.3+ <!-- @TODO: update this -->
+Compatibility: elixir 1.3+ <!-- @TODO: update this -->
 
 ## Documentation
 
@@ -56,27 +55,23 @@ To more information, please access the [full documention](http://google.com/). <
 +99 fully tested rules.
 
 - [Email](http://google.com/)
-- [Credit_card](http://google.com/)
-- [IBAN](http://google.com/)
-- [Country_code](http://google.com/)
-- [Consonants](http://google.com/)
-- [Mac Address](http://google.com/)
-- *... and many, many more [right here](http://google.com/)*
+- [CreditCard (Visa, Master, other)](http://google.com/)
+- [IBAN](http://google.com/), [BarCode](http://google.com/) / [CNPJ](http://google.com/) / [CPF](http://google.com/)
+- [CountryCode](http://google.com/) / [RegionCode](http://google.com/)
+- [Vowels](http://google.com/) / [Consonants](http://google.com/)
+- [IP](http://google.com/) / [MacAddress](http://google.com/)
+- *... and many, many more [right here!](http://google.com/)*
 
 # Contribution
 
-[Check the list of contributors](http://google.com/)
+[Check out the list of awesome contributors.](http://google.com/)
 
-- *Do you want a new validation rule?*
-    - Feel free to contribute by forking the project and making a pull request.
-
-
-- *Did you find a bug?*
-    - Please report on [issues](http://google.com)<!-- @TODO: update link --> proving high level of detail. Additionally, providing a failing test would help solve the issue.
+- *Do you want a new validation rule?* Feel free to contribute by forking the project and making a pull request.
+- *Did you find a bug?* Please report on [issues](http://google.com)<!-- @TODO: update link --> proving high level of detail. Additionally, providing a failing test would help solve the issue.
 
 # Inspiration
 
-We highly appreciate ❤️ the [Respect\Validation](https://github.com/Respect/Validation) project. Elixir Validation was **completely** based upon this incredible project. Kudos for all contributors.
+We highly appreciate ❤️ the [Respect\Validation](https://github.com/Respect/Validation) project. Elixir Validation was **completely** based upon this incredible project. Kudos for all contributors. We can't thank you enough.
 
 ## License
 

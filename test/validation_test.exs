@@ -97,6 +97,21 @@ defmodule ValidationTest do
 
 
 
+    # country code
+    assert V.country_code("BR",  :alpha2)
+    assert V.country_code("BRA", :alpha3)
+    assert V.country_code("US",  :alpha2)
+    assert V.country_code("USA", :alpha3)
+    assert V.country_code("DE",  :alpha2)
+    assert V.country_code("DEU", :alpha3)
+    assert V.country_code("076", :numeric)
+
+    assert_raise RuntimeError, "Invalid type param. It should be either: :alpha2, :alpha3 or :numeric.", fn ->
+      V.country_code("BRAAAA", :unknown_type)
+    end
+
+
+
     # cpf
     assert V.cpf("350.45261819")
     assert V.cpf("693-319-118-40")

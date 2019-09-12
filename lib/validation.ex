@@ -136,6 +136,26 @@ defmodule Validation do
   end
 
   @doc """
+  Validates an ISO country code like US, DE or BR.
+
+      # true
+      V.country_code("BR", :alpha2)
+      V.country_code("BRA", :alpha3)
+      V.country_code("US", :alpha2)
+      V.country_code("BRA", :alpha3)
+      V.country_code("DE", :alpha2)
+      V.country_code("DEU", :alpha3)
+      V.country_code("076", :numeric) # Brazil
+
+      # false
+      V.country_code("BRAAAA", :unknown_type)
+  """
+  @spec country_code(String.t, atom) :: boolean
+  def country_code(input, type \\ :alpha2) when is_binary(input) and is_atom(type) do
+    Validation.Rules.CountryCode.validate(input, type)
+  end
+
+  @doc """
   Validates whether the input is a valid CPF (brazilian ID).
 
       # true
