@@ -189,6 +189,17 @@ defmodule ValidationTest do
 
 
 
+    # currency_code
+    assert V.currency_code("USD")
+    assert V.currency_code("EUR")
+    assert V.currency_code("GBP")
+
+    refute V.currency_code("QQQ")
+    refute V.currency_code("2---1")
+    refute V.currency_code("nope")
+
+
+
     # consonant/1
     assert V.consonant("w")
     assert V.consonant("y")

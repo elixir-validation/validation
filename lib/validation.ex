@@ -291,6 +291,26 @@ defmodule Validation do
   end
 
   @doc """
+  Validates a currency code like USD, EUR or GBP according to [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217).
+
+      # true
+      V.currency_code("USD")
+      V.currency_code("EUR")
+      V.currency_code("GBP")
+
+      # false
+      V.currency_code("QQQ")
+      V.currency_code("2---1")
+      V.currency_code("nope")
+
+  This rules uses data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
+  """
+  @spec currency_code(String.t) :: boolean
+  def currency_code(input) when is_binary(input) do
+    Validation.Rules.CurrencyCode.validate(input)
+  end
+
+  @doc """
   Validates whether the input is has only consonants.
 
       # true
