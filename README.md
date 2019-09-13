@@ -8,7 +8,8 @@
 [![Inline docs](https://inch-ci.org/github/elixir-validation/validation.svg?branch=master)](https://inch-ci.org/github/elixir-validation/validation)
 [![Hex Version](https://img.shields.io/hexpm/v/validation.svg)](https://hex.pm/packages/validation)
 [![hex.pm downloads](https://img.shields.io/hexpm/dt/validation.svg)](https://hex.pm/packages/validation)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![HitCount](http://hits.dwyl.io/elixir-validation/validation.svg)](https://github.com/elixir-validation/validation)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 > **Easy. Simple. Powerful. 💪**
 >
