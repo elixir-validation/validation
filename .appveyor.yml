@@ -1,0 +1,13 @@
+version: build{build}
+
+install:
+  - cinst elixir
+  - cinst mingw
+  - refreshenv
+
+build_script:
+  - mix local.hex --force
+  - mix local.rebar --force
+  - mix deps.get
+  - mix compile
+  - mix test

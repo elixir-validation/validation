@@ -3,6 +3,7 @@
 ---
 
 [![Build Status](https://travis-ci.org/elixir-validation/validation.svg?branch=master)](https://travis-ci.org/elixir-validation/validation)
+[![Build status](https://ci.appveyor.com/api/projects/status/xu5j5rrlx76hlcsu?svg=true)](https://ci.appveyor.com/project/elixir-validation/validation)
 [![Coverage Status](https://coveralls.io/repos/github/elixir-validation/validation/badge.svg?branch=master)](https://coveralls.io/github/elixir-validation/validation?branch=master)
 [![Inline docs](https://inch-ci.org/github/elixir-validation/validation.svg?branch=master)](https://inch-ci.org/github/elixir-validation/validation)
 [![Hex Version](https://img.shields.io/hexpm/v/validation.svg)](https://hex.pm/packages/validation)
