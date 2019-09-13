@@ -1,4 +1,4 @@
-<img width="250" src="https://github.com/elixir-validation/validation/raw/master/media/logo-readme.png" alt="Elixir Validation">
+<img width="456" src="https://github.com/elixir-validation/validation/raw/master/media/logo-readme.png" alt="Elixir Validation">
 
 ---
 
@@ -7,6 +7,13 @@
 <!-- @TODO: add travis and code coverage here -->
 <!-- [![Build Status](http://img.shields.io/travis/zenorocha/clipboard.js/master.svg?style=flat)](https://travis-ci.org/zenorocha/clipboard.js) -->
 <!-- ![Killing Flash](https://img.shields.io/badge/killing-flash-brightgreen.svg?style=flat) -->
+
+<!-- [![Build Status](https://img.shields.io/travis/Respect/Validation/master.svg?style=flat-square)](http://travis-ci.org/Respect/Validation) -->
+<!-- [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/Respect/Validation/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/Respect/Validation/?branch=master) -->
+<!-- [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/Respect/Validation/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/Respect/Validation/?branch=master) -->
+<!-- [![Latest Stable Version](https://img.shields.io/packagist/v/respect/validation.svg?style=flat-square)](https://packagist.org/packages/respect/validation) -->
+<!-- [![Total Downloads](https://img.shields.io/packagist/dt/respect/validation.svg?style=flat-square)](https://packagist.org/packages/respect/validation) -->
+<!-- [![License](https://img.shields.io/packagist/l/respect/validation.svg?style=flat-square)](https://packagist.org/packages/respect/validation) -->
 
 > **Easy. Simple. Powerful. 💪**
 >
@@ -56,7 +63,7 @@ To more information, please access the [full documention](https://hexdocs.pm/val
 
 ## Rules
 
-+25 fully tested rules.
+##### +25 fully tested rules.
 
 - [Email](https://hexdocs.pm/validation/Validation.html#email/1)
 - [CreditCard (Visa, Master, other)](https://hexdocs.pm/validation/Validation.html#credit_card/1)
@@ -65,6 +72,14 @@ To more information, please access the [full documention](https://hexdocs.pm/val
 - [Vowel](https://hexdocs.pm/validation/Validation.html#vowel/1) / [Consonants](https://hexdocs.pm/validation/Validation.html#consonant/1)
 - [MacAddress](https://hexdocs.pm/validation/Validation.html#mac_address/1)
 - *... and many, many more [right here!](https://hexdocs.pm/validation)*
+
+<!--
+##### Roadmap: +30 coming up soon!
+- aaa
+- bbb
+- ccc
+-->
+<!-- @TODO: update roadmap list -->
 
 # Contribution
 
