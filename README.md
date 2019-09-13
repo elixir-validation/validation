@@ -8,43 +8,45 @@
 
 > **Easy. Simple. Powerful. 💪**
 >
-> 👉 The best Elixir Validation library with +99<!-- @TODO: update this number --> fully tested rules.
+> 👉 Elixir Validation library with +25 fully tested rules. *(+50 coming up soon!)*
+
+⚠️⚠️⚠️ Library under development! Upcoming new rules: <!-- @TODO: update upcoming list here --> 
 
 # Demo
-
-<!-- @TODO: update code examples -->
 
 ```elixir
 # alias Validation, as: V
 
 # valid data will return true
 V.email("hello@gmail.com")
+V.uuid("e4eaaaf2-d142-11e1-b3e4-080027620cdd")
 V.credit_card("4882743696073832")
-V.iban("DE89370400440532013000")
+V.mac_address("12-77-0E-42-E4-65")
 V.consonants("bcdfgh")
 V.country_code("US")
-V.mac_address("12-77-0E-42-E4-65")
 
 
 # invalid data will return false
-V.size("10GGG")            # could be something like "10G"
-V.postcode.uk("88888888")  # could be something like "SW1A 2BJ"
-V.is_odd(2)                # could be something like 3 or 5... 
+V.language_code("qq") # could be something like "en", "pt" or "de"
+V.vowel("bcdf")       # could be something like "aeiou"
+V.yes("nope")         # could be something like "yes", "yeah", "yeap"
+V.is_odd(2)           # could be something like 3 or 5... 
 ```
 
 ## Install
 
 To use Elixir Validation, please add to your `mix.exs` and run `mix deps.get`:
 
-```
+```elixir
 def deps do
   [
-    {:elixir_validation, "~> 0.1.0"}
+    {:validation, "~> 0.0.1-dev"}
   ]
 end
 ```
 
-Compatibility: elixir 1.3+ <!-- @TODO: update this -->
+<!-- @TODO: update this -->
+<!-- Compatibility: elixir 1.3+ --> 
 
 ## Documentation
 
@@ -52,7 +54,7 @@ To more information, please access the [full documention](http://google.com/). <
 
 ## Rules
 
-+99 fully tested rules.
++25 fully tested rules.
 
 - [Email](http://google.com/)
 - [CreditCard (Visa, Master, other)](http://google.com/)
