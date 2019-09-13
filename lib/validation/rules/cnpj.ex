@@ -3,8 +3,8 @@ defmodule Validation.Rules.CNPJ do
 
   @spec validate(String.t) :: boolean
   def validate(input) when is_binary(input) do
-    # Ugly code. But it works.
-    # Code ported from jsfromhell.com
+    # Yes, we know. This code is Ugly!
+    # But it works. Code ported from jsfromhell.com
 
     # only numbers
     digits = Regex.replace(~r/\D/, input, "")
