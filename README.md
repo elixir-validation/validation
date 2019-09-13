@@ -52,26 +52,26 @@ end
 
 ## Documentation
 
-To more information, please access the [full documention](http://google.com/). <!-- @TODO: update link -->
+To more information, please access the [full documention](https://hexdocs.pm/validation).
 
 ## Rules
 
 +25 fully tested rules.
 
-- [Email](http://google.com/)
-- [CreditCard (Visa, Master, other)](http://google.com/)
-- [IBAN](http://google.com/), [BarCode](http://google.com/) / [CNPJ](http://google.com/) / [CPF](http://google.com/)
-- [CountryCode](http://google.com/) / [RegionCode](http://google.com/)
-- [Vowels](http://google.com/) / [Consonants](http://google.com/)
-- [IP](http://google.com/) / [MacAddress](http://google.com/)
-- *... and many, many more [right here!](http://google.com/)*
+- [Email](https://hexdocs.pm/validation/Validation.html#email/1)
+- [CreditCard (Visa, Master, other)](https://hexdocs.pm/validation/Validation.html#credit_card/1)
+- [CNPJ](https://hexdocs.pm/validation/Validation.html#cnpj/1) / [CPF](https://hexdocs.pm/validation/Validation.html#cpf/1)
+- [CountryCode](https://hexdocs.pm/validation/Validation.html#country_code/2) / [SubdivisionCode](https://hexdocs.pm/validation/Validation.html#subdivision_code/2)
+- [Vowel](https://hexdocs.pm/validation/Validation.html#vowel/1) / [Consonants](https://hexdocs.pm/validation/Validation.html#consonant/1)
+- [MacAddress](https://hexdocs.pm/validation/Validation.html#mac_address/1)
+- *... and many, many more [right here!](https://hexdocs.pm/validation)*
 
 # Contribution
 
-[Check out the list of awesome contributors.](http://google.com/)
+[Check out the list of awesome contributors.](https://github.com/elixir-validation/validation/graphs/contributors)
 
 - *Do you want a new validation rule?* Feel free to contribute by forking the project and making a pull request.
-- *Did you find a bug?* Please report on [issues](http://google.com)<!-- @TODO: update link --> proving high level of detail. Additionally, providing a failing test would help solve the issue.
+- *Did you find a bug?* Please report on [issues](https://github.com/elixir-validation/validation/issues) proving high level of detail. Additionally, providing a failing test would help solve the issue.
 
 # Inspiration
 
@@ -79,4 +79,4 @@ We highly appreciate ❤️ the [Respect\Validation](https://github.com/Respect/
 
 ## License
 
-[MIT License](http://google.com) © Matheus Gontijo <!-- @TODO: update link -->
+[MIT License](https://github.com/elixir-validation/validation/blob/master/LICENSE.txt) © [Matheus Gontijo](https://github.com/matheusgontijo)
