@@ -15,7 +15,7 @@
 >
 > Elixir Validation library with +25 fully tested rules. *(+30 coming up soon!)*
 >
-> ⚠️⚠️ ️ Library under development! [Roadmap: upcoming new rules](#roadmap). ⚠️⚠️
+> ⚠️⚠️ ️ Library under development! [Roadmap: upcoming new rules](#roadmap-30-coming-up-soon). ⚠️⚠️
 
 # Demo
 
