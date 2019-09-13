@@ -375,6 +375,15 @@ defmodule ValidationTest do
 
 
 
+    # uuid
+    assert V.uuid("e4eaaaf2-d142-11e1-b3e4-080027620cdd")
+    assert V.uuid("11a38b9a-b3da-360f-9353-a5a725514269")
+    assert V.uuid("25769c6c-d34d-4bfe-ba98-e0ee856f3e7a", 4)
+
+    refute V.uuid("00000000-0000-aaaa-bbbb-cccccccccccc")
+
+
+
     # subdivision_code
     V.subdivision_code("US", "TX")
     V.subdivision_code("BR", "SP")

@@ -472,6 +472,22 @@ defmodule Validation do
   end
 
   @doc """
+  Validates whether the input is a valid UUID. It also supports validation of specific versions `1`, `3`, `4` and `5`.
+
+      # true
+      V.uuid("e4eaaaf2-d142-11e1-b3e4-080027620cdd")
+      V.uuid("11a38b9a-b3da-360f-9353-a5a725514269")
+      V.uuid("25769c6c-d34d-4bfe-ba98-e0ee856f3e7a", 4)
+
+      # false
+      V.uuid("00000000-0000-aaaa-bbbb-cccccccccccc")
+  """
+  @spec uuid(String.t, integer) :: boolean
+  def uuid(input, version \\ nil) when is_binary(input) and (is_integer(version) or is_nil(version)) do
+    Validation.Rules.UUID.validate(input)
+  end
+
+  @doc """
   Validates whether the input is valid Luhn.
 
       # true
