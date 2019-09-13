@@ -13,15 +13,11 @@ defmodule Validation.Rules.SubdivisionCode do
 
     path = root <> "/data/iso_3166-2/" <> "#{country}.json"
 
-    if File.exists?(path) do
-      {:ok, country_string} = File.read(path)
+    {:ok, country_string} = File.read(path)
 
-      data = Poison.decode!(country_string)
+    data = Poison.decode!(country_string)
 
-      Map.has_key?(data, "subdivisions")
-        and Map.has_key?(data["subdivisions"], subdivision)
-    else
-      raise "It's not a supported country."
-    end
+    Map.has_key?(data, "subdivisions")
+      and Map.has_key?(data["subdivisions"], subdivision)
   end
 end
