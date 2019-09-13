@@ -1,6 +1,8 @@
-<!-- @TODO: logo here -->
+<img width="250" src="https://github.com/elixir-validation/validation/raw/master/media/logo-readme.png" alt="Elixir Validation">
 
-# Elixir Validation
+---
+
+[![Build Status](https://travis-ci.org/elixir-validation/validation.svg?branch=master)](https://travis-ci.org/elixir-validation/validation)
 
 <!-- @TODO: add travis and code coverage here -->
 <!-- [![Build Status](http://img.shields.io/travis/zenorocha/clipboard.js/master.svg?style=flat)](https://travis-ci.org/zenorocha/clipboard.js) -->
@@ -8,9 +10,9 @@
 
 > **Easy. Simple. Powerful. 💪**
 >
-> 👉 Elixir Validation library with +25 fully tested rules. *(+50 coming up soon!)*
-
-⚠️⚠️⚠️ Library under development! Upcoming new rules: <!-- @TODO: update upcoming list here --> 
+> Elixir Validation library with +25 fully tested rules. *(+30 coming up soon!)*
+>
+> ⚠️⚠️⚠️ Library under development! Upcoming new rules: <!-- @TODO: update upcoming list here -->
 
 # Demo
 

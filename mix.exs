@@ -10,10 +10,13 @@ defmodule Validation.MixProject do
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+
+      # Hex
+      description: "Elixir Validation library with +25 fully tested rules. (+30 coming up soon!) | Easy. Simple. Powerful. 💪",
       package: package(),
 
       # Docs
-      name: "Elixir Validation",
+      name: "Validation",
       docs: docs(),
     ]
   end
@@ -43,7 +46,7 @@ defmodule Validation.MixProject do
 
   defp docs do
     [
-      main: "Elixir Validation",
+      main: "Validation",
       source_ref: "v#{@version}",
       canonical: "http://hexdocs.pm/validation",
       logo: "logo.png",
