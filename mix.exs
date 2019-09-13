@@ -18,6 +18,10 @@ defmodule Validation.MixProject do
       # Docs
       name: "Validation",
       docs: docs(),
+
+      # coveralls
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [coveralls: :test]
     ]
   end
 
@@ -41,7 +45,8 @@ defmodule Validation.MixProject do
     [
       {:poison, "~> 3.1"},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
-      {:inch_ex, only: :docs}
+      {:inch_ex, only: :docs},
+      {:excoveralls, "~> 0.10", only: :test},
     ]
   end
 
