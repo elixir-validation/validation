@@ -139,16 +139,16 @@ defmodule Validation do
   Validates country codes like US, DE or BR according to [ISO 639](https://en.wikipedia.org/wiki/ISO_639).
 
       # true
-      V.country_code("BR", :alpha2)
-      V.country_code("BRA", :alpha3)
       V.country_code("US", :alpha2)
+      V.country_code("USA", :alpha3)
+      V.country_code("BR", :alpha2)
       V.country_code("BRA", :alpha3)
       V.country_code("DE", :alpha2)
       V.country_code("DEU", :alpha3)
       V.country_code("076", :numeric) # Brazil
 
       # false
-      V.country_code("BRAAAA", :unknown_type)
+      V.country_code("USAAAAA", :unknown_type)
 
   The rules use data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
   """
