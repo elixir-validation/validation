@@ -14,7 +14,7 @@
 >
 > Elixir Validation library with +25 fully tested rules. *(+30 coming up soon!)*
 >
-> ⚠️⚠️⚠️ Library under development! Upcoming new rules: <!-- @TODO: update upcoming list here -->
+> ⚠️⚠️ ️ Library under development! [Roadmap: upcoming new rules](#roadmap). ⚠️⚠️
 
 # Demo
 
@@ -49,8 +49,7 @@ def deps do
 end
 ```
 
-<!-- @TODO: update this -->
-<!-- Compatibility: elixir 1.3+ --> 
+Compatibility: Elixir 1.6+ 
 
 ## Documentation
 
@@ -58,7 +57,7 @@ To more information, please access the [full documention](https://hexdocs.pm/val
 
 ## Rules
 
-##### +25 fully tested rules.
+##### +25 fully tested rules such as:
 
 - [Email](https://hexdocs.pm/validation/Validation.html#email/1)
 - [CreditCard (Visa, Master, other)](https://hexdocs.pm/validation/Validation.html#credit_card/1)
@@ -68,13 +67,9 @@ To more information, please access the [full documention](https://hexdocs.pm/val
 - [MacAddress](https://hexdocs.pm/validation/Validation.html#mac_address/1)
 - *... and many, many more [right here!](https://hexdocs.pm/validation)*
 
-<!--
-##### Roadmap: +30 coming up soon!
-- aaa
-- bbb
-- ccc
--->
-<!-- @TODO: update roadmap list -->
+## Roadmap: +30 coming up soon!
+
+*Barcode, Iban, WordCount, Contains, Bic, CurrencySymbol, Isbn, Issn, Domain, Extension, Factor, Fibonacci, Finite, HexRgbColor, IdentityCard, Imei, Infinite, Ip, KeyNested, StartsWith, EndsWith, Length, Min, Max, NfeAccessKey, NoWhitespace, NotBlank, NotEmpty, Numeric, PerfectSquare, Pesel, Phone, PostalCode (us, uk, br...), PrimeNumber, Punct, Roman, Size, Slug, Space, Url, Version*
 
 # Contribution
 
@@ -89,4 +84,4 @@ We highly appreciate ❤️ the [Respect\Validation](https://github.com/Respect/
 
 ## License
 
-[MIT License](https://github.com/elixir-validation/validation/blob/master/LICENSE.txt) © [Matheus Gontijo](https://github.com/matheusgontijo)
+[MIT License](https://github.com/elixir-validation/validation/blob/master/LICENSE.txt) – [Matheus Gontijo](https://github.com/matheusgontijo)

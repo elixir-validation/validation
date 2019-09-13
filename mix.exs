@@ -55,7 +55,7 @@ defmodule Validation.MixProject do
       main: "Validation",
       source_ref: "v#{@version}",
       canonical: "http://hexdocs.pm/validation",
-      logo: "logo.png",
+      logo: "media/logo-docs.png",
       source_url: "https://github.com/elixir-validation/validation",
     ]
   end
