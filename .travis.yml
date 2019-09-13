@@ -18,3 +18,4 @@ after_script:
   - MIX_ENV=docs mix deps.get
   - MIX_ENV=docs mix inch.report
   - bash <(curl -s https://codecov.io/bash)
+  - MIX_ENV=test mix coveralls.travis
