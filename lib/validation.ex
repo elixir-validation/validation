@@ -150,7 +150,7 @@ defmodule Validation do
       # false
       V.country_code("BRAAAA", :unknown_type)
 
-  This rules uses data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
+  The rules use data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
   """
   @spec country_code(String.t, atom) :: boolean
   def country_code(input, type \\ :alpha2) when is_binary(input) and is_atom(type) do
@@ -303,7 +303,7 @@ defmodule Validation do
       V.currency_code("2---1")
       V.currency_code("nope")
 
-  This rules uses data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
+  The rules use data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
   """
   @spec currency_code(String.t) :: boolean
   def currency_code(input) when is_binary(input) do
@@ -443,7 +443,7 @@ defmodule Validation do
       V.language_code("foo", :alpha3)
 
   You can choose between alpha-2 and alpha-3, alpha-2 is set by default.
-  This rules uses data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
+  The rules use data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
   """
   @spec language_code(String.t, atom) :: boolean
   def language_code(input, type \\ :alpha2) when is_binary(input) and is_atom(type) do
@@ -563,7 +563,7 @@ defmodule Validation do
       V.subdivision_code("BR", "BB")
       V.subdivision_code("CA", "CC")
 
-  This rules uses data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
+  The rules use data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
   """
   @spec subdivision_code(String.t, String.t) :: boolean
   def subdivision_code(country, subdivision) when is_binary(country) and is_binary(subdivision) do
