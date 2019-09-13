@@ -7,7 +7,7 @@ defmodule Validation.MixProject do
     [
       app: :validation,
       version: "0.0.1-dev",
-      elixir: "~> 1.9",
+      elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
 
