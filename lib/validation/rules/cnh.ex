@@ -8,7 +8,7 @@ defmodule Validation.Rules.CNH do
 
     if String.length(input) == 11 do
       # validate digits using a modulus 11 algorithm
-      {c, s1, s2, p, input} = validate_digits(0, 0, 0, 9, input)
+      {_, s1, s2, _, input} = validate_digits(0, 0, 0, 9, input)
 
       dv1 = rem(s1, 11)
 

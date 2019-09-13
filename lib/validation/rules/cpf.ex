@@ -10,7 +10,7 @@ defmodule Validation.Rules.CPF do
     c = Regex.replace(~r/\D/, input, "")
 
     if initial_validation(c) do
-      {n, s, i, c} = loop_check(0, 10, 0, c)
+      {n, _, _, c} = loop_check(0, 10, 0, c)
 
       n = rem(n, 11)
 
@@ -18,7 +18,7 @@ defmodule Validation.Rules.CPF do
       check = if n < 2, do: 0, else: 11 - n
 
       if c_9 == check do
-        {n, s, i, c} = loop_check(0, 11, 0, c)
+        {n, _, _, c} = loop_check(0, 11, 0, c)
 
         n = rem(n, 11)
 
@@ -66,6 +66,6 @@ defmodule Validation.Rules.CPF do
     i = i + 1
     s = s - 1
 
-    {n, s, i, c} = loop_check(n, s, i, c)
+    loop_check(n, s, i, c)
   end
 end

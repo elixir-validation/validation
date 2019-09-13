@@ -3,8 +3,6 @@ defmodule Validation.Rules.Luhn do
 
   @spec validate(String.t) :: boolean
   def validate(input) when is_binary(input) do
-    sum = 0
-
     # only numbers
     digits = Regex.replace(~r/\D/, input, "")
 
@@ -20,7 +18,7 @@ defmodule Validation.Rules.Luhn do
           if parity == rem(i, 2) do
             digit = bitwise(digit_i, 1)
 
-            digit = if 9 < digit, do: digit - 9, else: digit
+            if 9 < digit, do: digit - 9, else: digit
           else
             digit_i
           end

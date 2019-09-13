@@ -1,10 +1,8 @@
 defmodule Validation.Rules.Tld do
   @moduledoc false
 
-  """
-  List extracted from https://data.iana.org/TLD/tlds-alpha-by-domain.txt
-  Version 2019091200, Last Updated Thu Sep 12 07:07:02 2019 UTC
-  """
+  # List extracted from https://data.iana.org/TLD/tlds-alpha-by-domain.txt
+  # Version 2019091200, Last Updated Thu Sep 12 07:07:02 2019 UTC
   @tld_data [
     "AAA",
     "AARP",
