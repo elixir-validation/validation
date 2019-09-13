@@ -41,6 +41,7 @@ defmodule Validation.MixProject do
     [
       {:poison, "~> 3.1"},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
+      {:inch_ex, only: :docs}
     ]
   end
 
