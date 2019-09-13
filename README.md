@@ -3,6 +3,10 @@
 ---
 
 [![Build Status](https://travis-ci.org/elixir-validation/validation.svg?branch=master)](https://travis-ci.org/elixir-validation/validation)
+[![Inline docs](https://inch-ci.org/github/elixir-validation/validation.svg?branch=master)](https://inch-ci.org/github/elixir-validation/validation)
+[![Hex Version](https://img.shields.io/hexpm/v/validation.svg)](https://hex.pm/packages/validation)
+
+
 
 <!-- @TODO: add travis and code coverage here -->
 <!-- [![Build Status](http://img.shields.io/travis/zenorocha/clipboard.js/master.svg?style=flat)](https://travis-ci.org/zenorocha/clipboard.js) -->
