@@ -4,6 +4,7 @@ defmodule Validation.Rules.CNHTest do
   doctest Validation
 
   test "valid cnh" do
+    assert V.validate("00000009309")
     assert V.validate("02650306461")
     assert V.validate("04397322870")
     assert V.validate("04375701302")
@@ -32,6 +33,7 @@ defmodule Validation.Rules.CNHTest do
 
   test "invalid cnh" do
     refute V.validate("")
+    refute V.validate("00000009300")
     refute V.validate("0265131640")
     refute V.validate("0439732280")
     refute V.validate("0437571130")
