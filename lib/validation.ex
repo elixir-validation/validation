@@ -1,7 +1,42 @@
 defmodule Validation do
 
   @moduledoc """
-  @TODO: update docs.. wrapper to the rules
+  > **Easy. Simple. Powerful.**
+  >
+  > Elixir Validation library with +25 fully tested rules. *(+30 coming up soon!)*
+
+
+  [![Build Status](https://travis-ci.org/elixir-validation/validation.svg?branch=master)](https://travis-ci.org/elixir-validation/validation)
+  [![Build status](https://ci.appveyor.com/api/projects/status/xu5j5rrlx76hlcsu?svg=true)](https://ci.appveyor.com/project/elixir-validation/validation)
+  [![Coverage Status](https://coveralls.io/repos/github/elixir-validation/validation/badge.svg?branch=master)](https://coveralls.io/github/elixir-validation/validation?branch=master)
+  [![Inline docs](https://inch-ci.org/github/elixir-validation/validation.svg?branch=master)](https://inch-ci.org/github/elixir-validation/validation)
+  [![Hex Version](https://img.shields.io/hexpm/v/validation.svg)](https://hex.pm/packages/validation)
+  [![hex.pm downloads](https://img.shields.io/hexpm/dt/validation.svg)](https://hex.pm/packages/validation)
+  [![HitCount](http://hits.dwyl.io/elixir-validation/validation.svg)](https://github.com/elixir-validation/validation)
+  [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
+  \*\* Library under development! [Roadmap: upcoming new rules](#roadmap-30-coming-up-soon).
+
+  # Demo
+
+  ```elixir
+  # alias Validation, as: V
+
+  # valid data will return true
+  V.email("hello@gmail.com")
+  V.uuid("e4eaaaf2-d142-11e1-b3e4-080027620cdd")
+  V.credit_card("4882743696073832")
+  V.mac_address("12-77-0E-42-E4-65")
+  V.consonants("bcdfgh")
+  V.country_code("US")
+
+
+  # invalid data will return false
+  V.language_code("qq") # could be something like "en", "pt" or "de"
+  V.vowel("bcdf")       # could be something like "aeiou"
+  V.yes("nope")         # could be something like "yes", "yeah", "yeap"
+  V.is_odd(2)           # could be something like 3 or 5...
+  ```
   """
 
   @doc """
