@@ -15,7 +15,7 @@ defmodule Validation do
   [![HitCount](http://hits.dwyl.io/elixir-validation/validation.svg)](https://github.com/elixir-validation/validation)
   [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-  \*\* Library under development! [Roadmap: upcoming new rules](#roadmap-30-coming-up-soon).
+  \*\* Library under development! [Roadmap: upcoming new rules](https://github.com/elixir-validation/validation#roadmap-30-coming-up-soon).
 
   # Demo
 
