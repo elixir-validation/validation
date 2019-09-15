@@ -19,7 +19,7 @@ defmodule Validation do
 
   # Demo
 
-  ```elixir
+  ```
   # alias Validation, as: V
 
   # valid data will return true

@@ -6,13 +6,13 @@ defmodule Validation.MixProject do
   def project do
     [
       app: :validation,
-      version: "0.0.1-dev",
+      version: "0.0.2-dev",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
 
       # Hex
-      description: "Elixir Validation library with +25 fully tested rules. (+30 coming up soon!) | Easy. Simple. Powerful. 💪",
+      description: "Validation library with +25 fully tested rules — Email, IBAN, Credit Card, UUID, MacAddress... and many more!",
       package: package(),
 
       # Docs
@@ -25,7 +25,6 @@ defmodule Validation.MixProject do
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:logger]
@@ -40,7 +39,6 @@ defmodule Validation.MixProject do
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:poison, "~> 3.1"},
