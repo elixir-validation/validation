@@ -41,20 +41,20 @@ defmodule ValidationTest do
 
 
     # alphanumeric/1
-    assert V.alphanumeric?("foo123");
-    assert V.alphanumeric?("100number");
+    assert V.alphanumeric?("foo123")
+    assert V.alphanumeric?("100number")
 
-    refute V.alphanumeric?("number 100%");
-    refute V.alphanumeric?("foo_bar");
+    refute V.alphanumeric?("number 100%")
+    refute V.alphanumeric?("foo_bar")
 
 
 
     # alphanumeric/2
-    assert V.alphanumeric?("foo 123", " ");
-    assert V.alphanumeric?("foo_123", "_");
+    assert V.alphanumeric?("foo 123", " ")
+    assert V.alphanumeric?("foo_123", "_")
 
-    refute V.alphanumeric?("number 100%", "%");
-    refute V.alphanumeric?("foo_bar", "%");
+    refute V.alphanumeric?("number 100%", "%")
+    refute V.alphanumeric?("foo_bar", "%")
 
 
 
@@ -274,12 +274,12 @@ defmodule ValidationTest do
     assert V.even?(2)
     assert V.even?(4)
     assert V.even?(-2)
-    assert V.even?(9999998)
+    assert V.even?(9_999_998)
 
     refute V.even?(1)
     refute V.even?(5)
     refute V.even?(-3)
-    refute V.even?(9999999)
+    refute V.even?(9_999_999)
 
 
 
@@ -341,12 +341,12 @@ defmodule ValidationTest do
     assert V.odd?(1)
     assert V.odd?(5)
     assert V.odd?(-11)
-    assert V.odd?(9999999)
+    assert V.odd?(9_999_999)
 
     refute V.odd?(0)
     refute V.odd?(8)
     refute V.odd?(-100)
-    refute V.odd?(9999998)
+    refute V.odd?(9_999_998)
 
 
 

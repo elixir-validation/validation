@@ -9,7 +9,7 @@ defmodule Validation.Rules.EvenTest do
     assert V.validate?(4)
     assert V.validate?(100)
     assert V.validate?(-2)
-    assert V.validate?(9999998)
+    assert V.validate?(9_999_998)
   end
 
   test "invalid even" do
@@ -17,6 +17,6 @@ defmodule Validation.Rules.EvenTest do
     refute V.validate?(3)
     refute V.validate?(5)
     refute V.validate?(-1)
-    refute V.validate?(9999999)
+    refute V.validate?(9_999_999)
   end
 end

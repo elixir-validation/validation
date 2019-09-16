@@ -1,8 +1,8 @@
 defmodule Validation.Rules.UUID do
   @moduledoc false
 
-  @pattern_replace "__VERSION__";
-  @pattern_format  "^[0-9a-f]{8}-[0-9a-f]{4}-__VERSION__[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$";
+  @pattern_replace "__VERSION__"
+  @pattern_format  "^[0-9a-f]{8}-[0-9a-f]{4}-__VERSION__[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
 
   @spec validate?(String.t, integer) :: boolean
   def validate?(input, version \\ nil) when is_binary(input) and (is_integer(version) or is_nil(version)) do

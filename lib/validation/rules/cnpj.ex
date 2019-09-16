@@ -27,10 +27,6 @@ defmodule Validation.Rules.CNPJ do
       check    = if n < 2, do: 0 , else: 11 - n
 
       if digit_12 == check do
-        _ = """
-        $check = ($n %= 11) < 2 ? 0 : 11 - $n;
-        return $digits[13] == $check;
-        """
         {_, n} = Enum.map_reduce(0..12, 0, fn i, n ->
           digit_item = String.at(digits, i) |> String.to_integer
           base_item  = Enum.at(bases, i)

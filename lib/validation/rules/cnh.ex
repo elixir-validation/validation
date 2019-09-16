@@ -15,8 +15,8 @@ defmodule Validation.Rules.CNH do
       input_9 = String.at(input, 9) |> String.to_integer
       check   = if dv1 > 9, do: 0, else: dv1
 
-      if (input_9 == check) do
-        dv2 = rem(s2, 11) - (if dv1 > 9, do: 2, else: 0);
+      if input_9 == check do
+        dv2 = rem(s2, 11) - (if dv1 > 9, do: 2, else: 0)
 
         input_10 = String.at(input, 10) |> String.to_integer
 

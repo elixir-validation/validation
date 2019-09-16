@@ -83,12 +83,12 @@ defmodule Validation do
   Validates whether the input is alphanumeric.
 
       # true
-      V.alphanumeric?("foo123");
-      V.alphanumeric?("100number");
+      V.alphanumeric?("foo123")
+      V.alphanumeric?("100number")
 
       # false
-      V.alphanumeric?("number 100%");
-      V.alphanumeric?("foo_bar");
+      V.alphanumeric?("number 100%")
+      V.alphanumeric?("foo_bar")
   """
   @spec alphanumeric?(String.t) :: boolean
   def alphanumeric?(input) when is_binary(input) do
@@ -99,12 +99,12 @@ defmodule Validation do
   Validates whether the input is alphanumeric, excluding specific characters.
 
       # true
-      V.alphanumeric?("foo 123", " ");
-      V.alphanumeric?("foo_123", "_");
+      V.alphanumeric?("foo 123", " ")
+      V.alphanumeric?("foo_123", "_")
 
       # false
-      V.alphanumeric?("number 100%", "%");
-      V.alphanumeric?("foo_bar", "%");
+      V.alphanumeric?("number 100%", "%")
+      V.alphanumeric?("foo_bar", "%")
   """
   @spec alphanumeric?(String.t, String.t) :: boolean
   def alphanumeric?(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
