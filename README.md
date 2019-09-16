@@ -23,19 +23,19 @@
 # alias Validation, as: V
 
 # valid data will return true
-V.email("hello@gmail.com")
-V.uuid("e4eaaaf2-d142-11e1-b3e4-080027620cdd")
-V.credit_card("4882743696073832")
-V.mac_address("12-77-0E-42-E4-65")
-V.consonants("bcdfgh")
-V.country_code("US")
+V.email?("hello@gmail.com")
+V.uuid?("e4eaaaf2-d142-11e1-b3e4-080027620cdd")
+V.credit_card?("4882743696073832")
+V.mac_address?("12-77-0E-42-E4-65")
+V.consonants?("bcdfgh")
+V.country_code?("US")
 
 
 # invalid data will return false
-V.language_code("qq") # could be something like "en", "pt" or "de"
-V.vowel("bcdf")       # could be something like "aeiou"
-V.yes("nope")         # could be something like "yes", "yeah", "yeap"
-V.is_odd(2)           # could be something like 3 or 5... 
+V.language_code?("qq") # could be something like "en", "pt" or "de"
+V.vowel?("bcdf")       # could be something like "aeiou"
+V.yes?("nope")         # could be something like "yes", "yeah", "yeap"
+V.is_odd?(2)           # could be something like 3 or 5... 
 ```
 
 ## Install
