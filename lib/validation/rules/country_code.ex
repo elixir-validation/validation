@@ -284,8 +284,8 @@ defmodule Validation.Rules.CountryCode do
     %{:alpha2 => "ZW", :alpha3 => "ZWE", :numeric => "716"}, # Zimbabwe
   ]
 
-  @spec validate(String.t, atom) :: boolean
-  def validate(input, type \\ :alpha2) when is_binary(input) and is_atom(type) do
+  @spec validate?(String.t, atom) :: boolean
+  def validate?(input, type \\ :alpha2) when is_binary(input) and is_atom(type) do
     unless Enum.member?([:alpha2, :alpha3, :numeric], type) do
       raise "Invalid type param. It should be either: :alpha2, :alpha3 or :numeric."
     end

@@ -490,8 +490,8 @@ defmodule Validation.Rules.LanguageCode do
     %{:alpha2 => "",    :alpha3 => "zxx"},     # No linguistic content; Not applicable
   ]
 
-  @spec validate(String.t, atom) :: boolean
-  def validate(input, type \\ :alpha2) when is_binary(input) and is_atom(type) do
+  @spec validate?(String.t, atom) :: boolean
+  def validate?(input, type \\ :alpha2) when is_binary(input) and is_atom(type) do
     if String.length(input) >= 1 do
       unless Enum.member?([:alpha2, :alpha3], type) do
         raise "Invalid type param. It should be either: :alpha2 or :alpha3."

@@ -280,8 +280,8 @@ defmodule Validation.Rules.CurrencyCode do
     "XAG", # Silver
   ]
 
-  @spec validate(String.t) :: boolean
-  def validate(input) when is_binary(input) do
+  @spec validate?(String.t) :: boolean
+  def validate?(input) when is_binary(input) do
     Enum.member?(@currency_codes, input)
   end
 end

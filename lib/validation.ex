@@ -56,9 +56,9 @@ defmodule Validation do
       V.alpha("_")
       V.alpha("dgç")
   """
-  @spec alpha(String.t) :: boolean
-  def alpha(input) when is_binary(input) do
-    Validation.Rules.Alpha.validate(input)
+  @spec alpha?(String.t) :: boolean
+  def alpha?(input) when is_binary(input) do
+    Validation.Rules.Alpha.validate?(input)
   end
 
   @doc """
@@ -74,9 +74,9 @@ defmodule Validation do
       V.alpha("google.com321", "*")
       V.alpha("john doe1", "_")
   """
-  @spec alpha(String.t, String.t) :: boolean
-  def alpha(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
-    Validation.Rules.Alpha.validate(input, excluded_characters)
+  @spec alpha?(String.t, String.t) :: boolean
+  def alpha?(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
+    Validation.Rules.Alpha.validate?(input, excluded_characters)
   end
 
   @doc """
@@ -90,9 +90,9 @@ defmodule Validation do
       V.alphanumeric("number 100%");
       V.alphanumeric("foo_bar");
   """
-  @spec alphanumeric(String.t) :: boolean
-  def alphanumeric(input) when is_binary(input) do
-    Validation.Rules.Alphanumeric.validate(input)
+  @spec alphanumeric?(String.t) :: boolean
+  def alphanumeric?(input) when is_binary(input) do
+    Validation.Rules.Alphanumeric.validate?(input)
   end
 
   @doc """
@@ -106,9 +106,9 @@ defmodule Validation do
       V.alphanumeric("number 100%", "%");
       V.alphanumeric("foo_bar", "%");
   """
-  @spec alphanumeric(String.t, String.t) :: boolean
-  def alphanumeric(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
-    Validation.Rules.Alphanumeric.validate(input, excluded_characters)
+  @spec alphanumeric?(String.t, String.t) :: boolean
+  def alphanumeric?(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
+    Validation.Rules.Alphanumeric.validate?(input, excluded_characters)
   end
 
   @doc """
@@ -122,9 +122,9 @@ defmodule Validation do
       V.between(15, 20, 30)
       V.between(70, 300, 999)
   """
-  @spec between(number, number, number) :: boolean
-  def between(value, min, max) when is_number(value) and is_number(min) and is_number(max) do
-    Validation.Rules.Between.validate(value, min, max)
+  @spec between?(number, number, number) :: boolean
+  def between?(value, min, max) when is_number(value) and is_number(min) and is_number(max) do
+    Validation.Rules.Between.validate?(value, min, max)
   end
 
   @doc """
@@ -144,9 +144,9 @@ defmodule Validation do
       V.cnh("0265131640")
       V.cnh("0439732280")
   """
-  @spec cnh(String.t) :: boolean
-  def cnh(input) when is_binary(input) do
-    Validation.Rules.CNH.validate(input)
+  @spec cnh?(String.t) :: boolean
+  def cnh?(input) when is_binary(input) do
+    Validation.Rules.CNH.validate?(input)
   end
 
   @doc """
@@ -165,9 +165,9 @@ defmodule Validation do
       V.cnpj("00000000000000")
       V.cnpj("99-010-0.")
   """
-  @spec cnpj(String.t) :: boolean
-  def cnpj(input) when is_binary(input) do
-    Validation.Rules.CNPJ.validate(input)
+  @spec cnpj?(String.t) :: boolean
+  def cnpj?(input) when is_binary(input) do
+    Validation.Rules.CNPJ.validate?(input)
   end
 
   @doc """
@@ -187,9 +187,9 @@ defmodule Validation do
 
   The rules use data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
   """
-  @spec country_code(String.t, atom) :: boolean
-  def country_code(input, type \\ :alpha2) when is_binary(input) and is_atom(type) do
-    Validation.Rules.CountryCode.validate(input, type)
+  @spec country_code?(String.t, atom) :: boolean
+  def country_code?(input, type \\ :alpha2) when is_binary(input) and is_atom(type) do
+    Validation.Rules.CountryCode.validate?(input, type)
   end
 
   @doc """
@@ -211,9 +211,9 @@ defmodule Validation do
       V.cpf("8.8.8.8.8.8.8.8.8.8.8")
       V.cpf("693-319-110-40")
   """
-  @spec cpf(String.t) :: boolean
-  def cpf(input) when is_binary(input) do
-    Validation.Rules.CPF.validate(input)
+  @spec cpf?(String.t) :: boolean
+  def cpf?(input) when is_binary(input) do
+    Validation.Rules.CPF.validate?(input)
   end
 
   @doc """
@@ -229,9 +229,9 @@ defmodule Validation do
       V.credit_card("1234 1234 1234 1234")
       V.credit_card("1234.1234.1234.12__34")
   """
-  @spec credit_card(String.t) :: boolean
-  def credit_card(input) when is_binary(input) do
-    Validation.Rules.CreditCard.validate(input)
+  @spec credit_card?(String.t) :: boolean
+  def credit_card?(input) when is_binary(input) do
+    Validation.Rules.CreditCard.validate?(input)
   end
 
   @doc """
@@ -244,9 +244,9 @@ defmodule Validation do
       V.credit_card_amex("5376 7473 9720 8720")  # master
       V.credit_card_amex("4024.0071.5336.1885")  # visa
   """
-  @spec credit_card_amex(String.t) :: boolean
-  def credit_card_amex(input) when is_binary(input) do
-    Validation.Rules.CreditCard.Amex.validate(input)
+  @spec credit_card_amex?(String.t) :: boolean
+  def credit_card_amex?(input) when is_binary(input) do
+    Validation.Rules.CreditCard.Amex.validate?(input)
   end
 
   @doc """
@@ -259,9 +259,9 @@ defmodule Validation do
       V.credit_card_diners("5376 7473 9720 8720")  # master
       V.credit_card_diners("4024.0071.5336.1885")  # visa
   """
-  @spec credit_card_diners(String.t) :: boolean
-  def credit_card_diners(input) when is_binary(input) do
-    Validation.Rules.CreditCard.Diners.validate(input)
+  @spec credit_card_diners?(String.t) :: boolean
+  def credit_card_diners?(input) when is_binary(input) do
+    Validation.Rules.CreditCard.Diners.validate?(input)
   end
 
   @doc """
@@ -274,9 +274,9 @@ defmodule Validation do
       V.credit_card_discover("5376 7473 9720 8720")  # master
       V.credit_card_discover("4024.0071.5336.1885")  # visa
   """
-  @spec credit_card_discover(String.t) :: boolean
-  def credit_card_discover(input) when is_binary(input) do
-    Validation.Rules.CreditCard.Discover.validate(input)
+  @spec credit_card_discover?(String.t) :: boolean
+  def credit_card_discover?(input) when is_binary(input) do
+    Validation.Rules.CreditCard.Discover.validate?(input)
   end
 
   @doc """
@@ -289,9 +289,9 @@ defmodule Validation do
       V.credit_card_jcb("5376 7473 9720 8720")  # master
       V.credit_card_jcb("4024.0071.5336.1885")  # visa
   """
-  @spec credit_card_jcb(String.t) :: boolean
-  def credit_card_jcb(input) when is_binary(input) do
-    Validation.Rules.CreditCard.Jcb.validate(input)
+  @spec credit_card_jcb?(String.t) :: boolean
+  def credit_card_jcb?(input) when is_binary(input) do
+    Validation.Rules.CreditCard.Jcb.validate?(input)
   end
 
   @doc """
@@ -304,9 +304,9 @@ defmodule Validation do
       V.credit_card_master("340-3161-9380-9364")   # amex
       V.credit_card_master("4024.0071.5336.1885")  # visa
   """
-  @spec credit_card_master(String.t) :: boolean
-  def credit_card_master(input) when is_binary(input) do
-    Validation.Rules.CreditCard.Master.validate(input)
+  @spec credit_card_master?(String.t) :: boolean
+  def credit_card_master?(input) when is_binary(input) do
+    Validation.Rules.CreditCard.Master.validate?(input)
   end
 
   @doc """
@@ -320,9 +320,9 @@ defmodule Validation do
       V.credit_card_visa("340-3161-9380-9364")   # amex
       V.credit_card_visa("5376 7473 9720 8720")  # master
   """
-  @spec credit_card_visa(String.t) :: boolean
-  def credit_card_visa(input) when is_binary(input) do
-    Validation.Rules.CreditCard.Visa.validate(input)
+  @spec credit_card_visa?(String.t) :: boolean
+  def credit_card_visa?(input) when is_binary(input) do
+    Validation.Rules.CreditCard.Visa.validate?(input)
   end
 
   @doc """
@@ -340,9 +340,9 @@ defmodule Validation do
 
   The rules use data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
   """
-  @spec currency_code(String.t) :: boolean
-  def currency_code(input) when is_binary(input) do
-    Validation.Rules.CurrencyCode.validate(input)
+  @spec currency_code?(String.t) :: boolean
+  def currency_code?(input) when is_binary(input) do
+    Validation.Rules.CurrencyCode.validate?(input)
   end
 
   @doc """
@@ -360,9 +360,9 @@ defmodule Validation do
       V.consonant("aeiou")
       V.consonant("Foo")
   """
-  @spec consonant(String.t) :: boolean
-  def consonant(input) when is_binary(input) do
-    Validation.Rules.Consonant.validate(input)
+  @spec consonant?(String.t) :: boolean
+  def consonant?(input) when is_binary(input) do
+    Validation.Rules.Consonant.validate?(input)
   end
 
   @doc """
@@ -377,9 +377,9 @@ defmodule Validation do
       V.consonant("awww%", "%")
       V.consonant("uwwwq", "_")
   """
-  @spec consonant(String.t, String.t) :: boolean
-  def consonant(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
-    Validation.Rules.Consonant.validate(input, excluded_characters)
+  @spec consonant?(String.t, String.t) :: boolean
+  def consonant?(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
+    Validation.Rules.Consonant.validate?(input, excluded_characters)
   end
 
   @doc """
@@ -396,9 +396,9 @@ defmodule Validation do
       V.digit("-12")
       V.digit("1.0")
   """
-  @spec digit(String.t) :: boolean
-  def digit(input) when is_binary(input) do
-    Validation.Rules.Digit.validate(input)
+  @spec digit?(String.t) :: boolean
+  def digit?(input) when is_binary(input) do
+    Validation.Rules.Digit.validate?(input)
   end
 
   @doc """
@@ -413,9 +413,9 @@ defmodule Validation do
       V.digit("1.%0", ".")
       V.digit("3333316-5.0/", "-.")
   """
-  @spec digit(String.t, String.t) :: boolean
-  def digit(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
-    Validation.Rules.Digit.validate(input, excluded_characters)
+  @spec digit?(String.t, String.t) :: boolean
+  def digit?(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
+    Validation.Rules.Digit.validate?(input, excluded_characters)
   end
 
   @doc """
@@ -433,9 +433,9 @@ defmodule Validation do
       V.email(".test@test.com")
       V.email("@domain.com")
   """
-  @spec email(String.t) :: boolean
-  def email(input) when is_binary(input) do
-    Validation.Rules.Email.validate(input)
+  @spec email?(String.t) :: boolean
+  def email?(input) when is_binary(input) do
+    Validation.Rules.Email.validate?(input)
   end
 
   @doc """
@@ -454,9 +454,9 @@ defmodule Validation do
       V.even(-3)
       V.even(9999999)
   """
-  @spec even(Integer.t) :: boolean
-  def even(input) when is_integer(input) do
-    Validation.Rules.Even.validate(input)
+  @spec even?(Integer.t) :: boolean
+  def even?(input) when is_integer(input) do
+    Validation.Rules.Even.validate?(input)
   end
 
   @doc """
@@ -480,9 +480,9 @@ defmodule Validation do
   You can choose between alpha-2 and alpha-3, alpha-2 is set by default.
   The rules use data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
   """
-  @spec language_code(String.t, atom) :: boolean
-  def language_code(input, type \\ :alpha2) when is_binary(input) and is_atom(type) do
-    Validation.Rules.LanguageCode.validate(input, type)
+  @spec language_code?(String.t, atom) :: boolean
+  def language_code?(input, type \\ :alpha2) when is_binary(input) and is_atom(type) do
+    Validation.Rules.LanguageCode.validate?(input, type)
   end
 
   @doc """
@@ -501,9 +501,9 @@ defmodule Validation do
       V.lowercase("First Character Uppercase")
       V.lowercase("With Numbers 1 2 3")
   """
-  @spec lowercase(String.t) :: boolean
-  def lowercase(input) when is_binary(input) do
-    Validation.Rules.Lowercase.validate(input)
+  @spec lowercase?(String.t) :: boolean
+  def lowercase?(input) when is_binary(input) do
+    Validation.Rules.Lowercase.validate?(input)
   end
 
   @doc """
@@ -517,9 +517,9 @@ defmodule Validation do
       # false
       V.uuid("00000000-0000-aaaa-bbbb-cccccccccccc")
   """
-  @spec uuid(String.t, integer) :: boolean
-  def uuid(input, version \\ nil) when is_binary(input) and (is_integer(version) or is_nil(version)) do
-    Validation.Rules.UUID.validate(input)
+  @spec uuid?(String.t, integer) :: boolean
+  def uuid?(input, version \\ nil) when is_binary(input) and (is_integer(version) or is_nil(version)) do
+    Validation.Rules.UUID.validate?(input)
   end
 
   @doc """
@@ -535,9 +535,9 @@ defmodule Validation do
       V.luhn("true")
       V.luhn("8888888888888887")
   """
-  @spec luhn(String.t) :: boolean
-  def luhn(input) when is_binary(input) do
-    Validation.Rules.Luhn.validate(input)
+  @spec luhn?(String.t) :: boolean
+  def luhn?(input) when is_binary(input) do
+    Validation.Rules.Luhn.validate?(input)
   end
 
   @doc """
@@ -552,9 +552,9 @@ defmodule Validation do
       V.mac_address("")
       V.mac_address("00-1122:33:44:55")
   """
-  @spec mac_address(String.t) :: boolean
-  def mac_address(input) when is_binary(input) do
-    Validation.Rules.MacAddress.validate(input)
+  @spec mac_address?(String.t) :: boolean
+  def mac_address?(input) when is_binary(input) do
+    Validation.Rules.MacAddress.validate?(input)
   end
 
   @doc """
@@ -576,9 +576,9 @@ defmodule Validation do
       V.no("Não")
       V.no("não")
   """
-  @spec no(String.t) :: boolean
-  def no(input) when is_binary(input) do
-    Validation.Rules.No.validate(input)
+  @spec no?(String.t) :: boolean
+  def no?(input) when is_binary(input) do
+    Validation.Rules.No.validate?(input)
   end
 
   @doc """
@@ -596,9 +596,9 @@ defmodule Validation do
       V.odd(-100)
       V.odd(9999998)
   """
-  @spec odd(Integer.t) :: boolean
-  def odd(input) when is_integer(input) do
-    Validation.Rules.Odd.validate(input)
+  @spec odd?(Integer.t) :: boolean
+  def odd?(input) when is_integer(input) do
+    Validation.Rules.Odd.validate?(input)
   end
 
   @doc """
@@ -616,9 +616,9 @@ defmodule Validation do
 
   The rules use data from [iso-codes](https://salsa.debian.org/iso-codes-team/iso-codes).
   """
-  @spec subdivision_code(String.t, String.t) :: boolean
-  def subdivision_code(country, subdivision) when is_binary(country) and is_binary(subdivision) do
-    Validation.Rules.SubdivisionCode.validate(country, subdivision)
+  @spec subdivision_code?(String.t, String.t) :: boolean
+  def subdivision_code?(country, subdivision) when is_binary(country) and is_binary(subdivision) do
+    Validation.Rules.SubdivisionCode.validate?(country, subdivision)
   end
 
   @doc """
@@ -634,9 +634,9 @@ defmodule Validation do
       V.tld("1.0")
       V.tld("wrongtld")
   """
-  @spec tld(String.t) :: boolean
-  def tld(input) when is_binary(input) do
-    Validation.Rules.Tld.validate(input)
+  @spec tld?(String.t) :: boolean
+  def tld?(input) when is_binary(input) do
+    Validation.Rules.Tld.validate?(input)
   end
 
   @doc """
@@ -655,9 +655,9 @@ defmodule Validation do
       V.uppercase("First Character Uppercase")
       V.uppercase("With Numbers 1 2 3")
   """
-  @spec uppercase(String.t) :: boolean
-  def uppercase(input) when is_binary(input) do
-    Validation.Rules.Uppercase.validate(input)
+  @spec uppercase?(String.t) :: boolean
+  def uppercase?(input) when is_binary(input) do
+    Validation.Rules.Uppercase.validate?(input)
   end
 
   @doc """
@@ -675,9 +675,9 @@ defmodule Validation do
       V.vowel("16")
       V.vowel("\\r")
   """
-  @spec vowel(String.t) :: boolean
-  def vowel(input) when is_binary(input) do
-    Validation.Rules.Vowel.validate(input)
+  @spec vowel?(String.t) :: boolean
+  def vowel?(input) when is_binary(input) do
+    Validation.Rules.Vowel.validate?(input)
   end
 
   @doc """
@@ -691,9 +691,9 @@ defmodule Validation do
       V.vowel("b==aaaa", "=")
       V.vowel("bc==aeoiu", "b!-")
   """
-  @spec vowel(String.t, String.t) :: boolean
-  def vowel(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
-    Validation.Rules.Vowel.validate(input, excluded_characters)
+  @spec vowel?(String.t, String.t) :: boolean
+  def vowel?(input, excluded_characters) when is_binary(input) and is_binary(excluded_characters) do
+    Validation.Rules.Vowel.validate?(input, excluded_characters)
   end
 
   @doc """
@@ -715,8 +715,8 @@ defmodule Validation do
       V.yes("Yoo")
       V.yes("Yiip")
   """
-  @spec yes(String.t) :: boolean
-  def yes(input) when is_binary(input) do
-    Validation.Rules.Yes.validate(input)
+  @spec yes?(String.t) :: boolean
+  def yes?(input) when is_binary(input) do
+    Validation.Rules.Yes.validate?(input)
   end
 end

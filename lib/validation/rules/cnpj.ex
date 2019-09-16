@@ -1,8 +1,8 @@
 defmodule Validation.Rules.CNPJ do
   @moduledoc false
 
-  @spec validate(String.t) :: boolean
-  def validate(input) when is_binary(input) do
+  @spec validate?(String.t) :: boolean
+  def validate?(input) when is_binary(input) do
     # Yes, we know. This code is Ugly!
     # But it works. Code ported from jsfromhell.com
 

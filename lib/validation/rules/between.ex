@@ -1,8 +1,8 @@
 defmodule Validation.Rules.Between do
   @moduledoc false
 
-  @spec validate(number | String.t, number | String.t, number | String.t) :: boolean
-  def validate(value, min, max) when
+  @spec validate?(number | String.t, number | String.t, number | String.t) :: boolean
+  def validate?(value, min, max) when
        (is_number(value) and is_number(min) and is_number(max))
     or (is_binary(value) and is_binary(min) and is_binary(max))
   do

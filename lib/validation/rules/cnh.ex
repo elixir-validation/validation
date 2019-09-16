@@ -1,8 +1,8 @@
 defmodule Validation.Rules.CNH do
   @moduledoc false
 
-  @spec validate(String.t) :: boolean
-  def validate(input) when is_binary(input) do
+  @spec validate?(String.t) :: boolean
+  def validate?(input) when is_binary(input) do
     # only numbers
     input = Regex.replace(~r/\D/, input, "")
 

@@ -3,9 +3,9 @@ defmodule Validation.Rules.SubdivisionCode do
 
   @moduledoc false
 
-  @spec validate(String.t, String.t) :: boolean
-  def validate(country, subdivision) when is_binary(country) and is_binary(subdivision) do
-    unless CountryCode.validate(country) do
+  @spec validate?(String.t, String.t) :: boolean
+  def validate?(country, subdivision) when is_binary(country) and is_binary(subdivision) do
+    unless CountryCode.validate?(country) do
       raise "Invalid country code (ISO 3166 alpha-2)."
     end
 
