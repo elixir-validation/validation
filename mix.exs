@@ -45,6 +45,7 @@ defmodule Validation.MixProject do
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
       {:inch_ex, only: :docs},
       {:excoveralls, "~> 0.10", only: :test},
+      {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false}
     ]
   end
 
