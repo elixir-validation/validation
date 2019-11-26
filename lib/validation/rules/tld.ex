@@ -1529,10 +1529,10 @@ defmodule Validation.Rules.Tld do
     "ZM",
     "ZONE",
     "ZUERICH",
-    "ZW",
+    "ZW"
   ]
 
-  @spec validate?(String.t) :: boolean
+  @spec validate?(String.t()) :: boolean
   def validate?(input) when is_binary(input) do
     Enum.member?(@tld_data, String.upcase(input))
   end

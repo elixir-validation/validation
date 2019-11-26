@@ -13,7 +13,6 @@ defmodule ValidationTest do
   But keep in mind that the main tests are not found here.
   """
   test "validate documentation and wrappers" do
-
     # alpha/1
     assert V.alpha?("")
     assert V.alpha?("a")
@@ -27,8 +26,6 @@ defmodule ValidationTest do
     refute V.alpha?("_")
     refute V.alpha?("dgç")
 
-
-
     # alpha/2
     assert V.alpha?("john_", "_")
     assert V.alpha?("google.com", ".")
@@ -38,16 +35,12 @@ defmodule ValidationTest do
     refute V.alpha?("google.com321", "*")
     refute V.alpha?("john doe1", "_")
 
-
-
     # alphanumeric/1
     assert V.alphanumeric?("foo123")
     assert V.alphanumeric?("100number")
 
     refute V.alphanumeric?("number 100%")
     refute V.alphanumeric?("foo_bar")
-
-
 
     # alphanumeric/2
     assert V.alphanumeric?("foo 123", " ")
@@ -56,17 +49,12 @@ defmodule ValidationTest do
     refute V.alphanumeric?("number 100%", "%")
     refute V.alphanumeric?("foo_bar", "%")
 
-
-
-
     # between
     assert V.between?(15, 10, 20)
     assert V.between?(70, 0, 100)
 
     refute V.between?(15, 20, 30)
     refute V.between?(70, 300, 999)
-
-
 
     # cnh
     assert V.cnh?("02650306461")
@@ -81,8 +69,6 @@ defmodule ValidationTest do
     refute V.cnh?("0265131640")
     refute V.cnh?("0439732280")
 
-
-
     # cnpj
     assert V.cnpj?("32.063.364/0001-07")
     assert V.cnpj?("27.355.204/0001-00")
@@ -95,22 +81,20 @@ defmodule ValidationTest do
     refute V.cnpj?("00000000000000")
     refute V.cnpj?("99-010-0.")
 
-
-
     # country code
-    assert V.country_code?("BR",  :alpha2)
+    assert V.country_code?("BR", :alpha2)
     assert V.country_code?("BRA", :alpha3)
-    assert V.country_code?("US",  :alpha2)
+    assert V.country_code?("US", :alpha2)
     assert V.country_code?("USA", :alpha3)
-    assert V.country_code?("DE",  :alpha2)
+    assert V.country_code?("DE", :alpha2)
     assert V.country_code?("DEU", :alpha3)
     assert V.country_code?("076", :numeric)
 
-    assert_raise RuntimeError, "Invalid type param. It should be either: :alpha2, :alpha3 or :numeric.", fn ->
-      V.country_code?("BRAAAA", :unknown_type)
-    end
-
-
+    assert_raise RuntimeError,
+                 "Invalid type param. It should be either: :alpha2, :alpha3 or :numeric.",
+                 fn ->
+                   V.country_code?("BRAAAA", :unknown_type)
+                 end
 
     # cpf
     assert V.cpf?("350.45261819")
@@ -127,8 +111,6 @@ defmodule ValidationTest do
     refute V.cpf?("8.8.8.8.8.8.8.8.8.8.8")
     refute V.cpf?("693-319-110-40")
 
-
-
     # credit_card
     assert V.credit_card?("2223000048400011")
     assert V.credit_card?("2222 4000 4124 0011")
@@ -138,15 +120,11 @@ defmodule ValidationTest do
     refute V.credit_card?("1234 1234 1234 1234")
     refute V.credit_card?("1234.1234.1234.12__34")
 
-
-
     # credit_card_amex
     assert V.credit_card_amex?("340-3161-9380-9364")
 
     refute V.credit_card_amex?("5376 7473 9720 8720")
     refute V.credit_card_amex?("4024.0071.5336.1885")
-
-
 
     # credit_card_diners
     assert V.credit_card_diners?("30351042633884")
@@ -154,15 +132,11 @@ defmodule ValidationTest do
     refute V.credit_card_diners?("5376 7473 9720 8720")
     refute V.credit_card_diners?("4024.0071.5336.1885")
 
-
-
     # credit_card_discover
     assert V.credit_card_discover?("6011000990139424")
 
     refute V.credit_card_discover?("5376 7473 9720 8720")
     refute V.credit_card_discover?("4024.0071.5336.1885")
-
-
 
     # credit_card_jcb
     assert V.credit_card_jcb?("3566002020360505")
@@ -170,15 +144,11 @@ defmodule ValidationTest do
     refute V.credit_card_jcb?("5376 7473 9720 8720")
     refute V.credit_card_jcb?("4024.0071.5336.1885")
 
-
-
     # credit_card_master
     assert V.credit_card_master?("5376 7473 9720 8720")
 
     refute V.credit_card_master?("340-3161-9380-9364")
     refute V.credit_card_master?("4024.0071.5336.1885")
-
-
 
     # credit_card_visa
     assert V.credit_card_visa?("4024 007 193 879")
@@ -186,8 +156,6 @@ defmodule ValidationTest do
 
     refute V.credit_card_visa?("340-3161-9380-9364")
     refute V.credit_card_visa?("5376 7473 9720 8720")
-
-
 
     # currency_code
     assert V.currency_code?("USD")
@@ -197,8 +165,6 @@ defmodule ValidationTest do
     refute V.currency_code?("QQQ")
     refute V.currency_code?("2---1")
     refute V.currency_code?("nope")
-
-
 
     # consonant/1
     assert V.consonant?("w")
@@ -211,8 +177,6 @@ defmodule ValidationTest do
     refute V.consonant?("aeiou")
     refute V.consonant?("Foo")
 
-
-
     # consonant/2
     assert V.consonant?("www%", "%")
     assert V.consonant?("bcd_fgh", "_")
@@ -220,8 +184,6 @@ defmodule ValidationTest do
 
     refute V.consonant?("awww%", "%")
     refute V.consonant?("uwwwq", "_")
-
-
 
     # digit/1
     assert V.digit?("165")
@@ -233,8 +195,6 @@ defmodule ValidationTest do
     refute V.digit?("-12")
     refute V.digit?("1.0")
 
-
-
     # digit/2
     assert V.digit?("1.0", ".")
     assert V.digit?("16-50", "-")
@@ -242,8 +202,6 @@ defmodule ValidationTest do
     refute V.digit?("")
     refute V.digit?("1.%0", ".")
     refute V.digit?("3333316-5.0/", "-.")
-
-
 
     # email
     assert V.email?("john@gmail.com")
@@ -256,8 +214,6 @@ defmodule ValidationTest do
     refute V.email?(".test@test.com")
     refute V.email?("@domain.com")
 
-
-
     # luhn
     assert V.luhn?("9773725370")
     assert V.luhn?("2222400041240011")
@@ -266,8 +222,6 @@ defmodule ValidationTest do
     refute V.luhn?("")
     refute V.luhn?("true")
     refute V.luhn?("8888888888888887")
-
-
 
     # even
     assert V.even?(0)
@@ -281,20 +235,16 @@ defmodule ValidationTest do
     refute V.even?(-3)
     refute V.even?(9_999_999)
 
-
-
     # language_code
-    V.language_code?("en",  :alpha2)
-    V.language_code?("pt",  :alpha2)
-    V.language_code?("it",  :alpha2)
+    V.language_code?("en", :alpha2)
+    V.language_code?("pt", :alpha2)
+    V.language_code?("it", :alpha2)
     V.language_code?("eng", :alpha3)
     V.language_code?("por", :alpha3)
     V.language_code?("ita", :alpha3)
 
-    V.language_code?("hi",  :alpha2)
+    V.language_code?("hi", :alpha2)
     V.language_code?("foo", :alpha3)
-
-
 
     # lowercase
     assert V.lowercase?("")
@@ -308,8 +258,6 @@ defmodule ValidationTest do
     refute V.lowercase?("First Character Uppercase")
     refute V.lowercase?("With Numbers 1 2 3")
 
-
-
     # mac_address
     assert V.mac_address?("00:11:22:33:44:55")
     assert V.mac_address?("66-77-88-99-aa-bb")
@@ -317,8 +265,6 @@ defmodule ValidationTest do
 
     refute V.mac_address?("")
     refute V.mac_address?("00-1122:33:44:55")
-
-
 
     # no
     assert V.no?("N")
@@ -335,8 +281,6 @@ defmodule ValidationTest do
     refute V.no?("Não")
     refute V.no?("não")
 
-
-
     # odd
     assert V.odd?(1)
     assert V.odd?(5)
@@ -348,8 +292,6 @@ defmodule ValidationTest do
     refute V.odd?(-100)
     refute V.odd?(9_999_998)
 
-
-
     # tld
     V.tld?("com")
     V.tld?("br")
@@ -358,8 +300,6 @@ defmodule ValidationTest do
 
     V.tld?("1.0")
     V.tld?("wrongtld")
-
-
 
     # uppercase
     assert V.uppercase?("")
@@ -373,16 +313,12 @@ defmodule ValidationTest do
     refute V.uppercase?("First Character Uppercase")
     refute V.uppercase?("With Numbers 1 2 3")
 
-
-
     # uuid
     assert V.uuid?("e4eaaaf2-d142-11e1-b3e4-080027620cdd")
     assert V.uuid?("11a38b9a-b3da-360f-9353-a5a725514269")
     assert V.uuid?("25769c6c-d34d-4bfe-ba98-e0ee856f3e7a", 4)
 
     refute V.uuid?("00000000-0000-aaaa-bbbb-cccccccccccc")
-
-
 
     # subdivision_code
     V.subdivision_code?("US", "TX")
@@ -392,8 +328,6 @@ defmodule ValidationTest do
     V.subdivision_code?("US", "AA")
     V.subdivision_code?("BR", "BB")
     V.subdivision_code?("CA", "CC")
-
-
 
     # vowel/1
     assert V.vowel?("a")
@@ -406,16 +340,12 @@ defmodule ValidationTest do
     refute V.vowel?("16")
     refute V.vowel?("\r")
 
-
-
     # vowel/2
     assert V.vowel?("aaaa==", "=")
     assert V.vowel?("aeoiu!!--", "!-")
 
     refute V.vowel?("b==aaaa", "=")
     refute V.vowel?("bc==aeoiu", "b!-")
-
-
 
     # yes
     assert V.yes?("Y")
@@ -431,6 +361,5 @@ defmodule ValidationTest do
     refute V.yes?("Sim")
     refute V.yes?("Yoo")
     refute V.yes?("Yiip")
-
   end
 end

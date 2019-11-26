@@ -2,285 +2,561 @@ defmodule Validation.Rules.CurrencyCode do
   @moduledoc false
 
   @currency_codes [
-    "AFN", # Afghani
-    "EUR", # Euro
-    "ALL", # Lek
-    "DZD", # Algerian Dinar
-    "USD", # US Dollar
-    "EUR", # Euro
-    "AOA", # Kwanza
-    "XCD", # East Caribbean Dollar
-    "XCD", # East Caribbean Dollar
-    "ARS", # Argentine Peso
-    "AMD", # Armenian Dram
-    "AWG", # Aruban Florin
-    "AUD", # Australian Dollar
-    "EUR", # Euro
-    "AZN", # Azerbaijan Manat
-    "BSD", # Bahamian Dollar
-    "BHD", # Bahraini Dinar
-    "BDT", # Taka
-    "BBD", # Barbados Dollar
-    "BYN", # Belarusian Ruble
-    "EUR", # Euro
-    "BZD", # Belize Dollar
-    "XOF", # CFA Franc BCEAO
-    "BMD", # Bermudian Dollar
-    "INR", # Indian Rupee
-    "BTN", # Ngultrum
-    "BOB", # Boliviano
-    "BOV", # Mvdol
-    "USD", # US Dollar
-    "BAM", # Convertible Mark
-    "BWP", # Pula
-    "NOK", # Norwegian Krone
-    "BRL", # Brazilian Real
-    "USD", # US Dollar
-    "BND", # Brunei Dollar
-    "BGN", # Bulgarian Lev
-    "XOF", # CFA Franc BCEAO
-    "BIF", # Burundi Franc
-    "CVE", # Cabo Verde Escudo
-    "KHR", # Riel
-    "XAF", # CFA Franc BEAC
-    "CAD", # Canadian Dollar
-    "KYD", # Cayman Islands Dollar
-    "XAF", # CFA Franc BEAC
-    "XAF", # CFA Franc BEAC
-    "CLP", # Chilean Peso
-    "CLF", # Unidad de Fomento
-    "CNY", # Yuan Renminbi
-    "AUD", # Australian Dollar
-    "AUD", # Australian Dollar
-    "COP", # Colombian Peso
-    "COU", # Unidad de Valor Real
-    "KMF", # Comorian Franc
-    "CDF", # Congolese Franc
-    "XAF", # CFA Franc BEAC
-    "NZD", # New Zealand Dollar
-    "CRC", # Costa Rican Colon
-    "XOF", # CFA Franc BCEAO
-    "HRK", # Kuna
-    "CUP", # Cuban Peso
-    "CUC", # Peso Convertible
-    "ANG", # Netherlands Antillean Guilder
-    "EUR", # Euro
-    "CZK", # Czech Koruna
-    "DKK", # Danish Krone
-    "DJF", # Djibouti Franc
-    "XCD", # East Caribbean Dollar
-    "DOP", # Dominican Peso
-    "USD", # US Dollar
-    "EGP", # Egyptian Pound
-    "SVC", # El Salvador Colon
-    "USD", # US Dollar
-    "XAF", # CFA Franc BEAC
-    "ERN", # Nakfa
-    "EUR", # Euro
-    "ETB", # Ethiopian Birr
-    "EUR", # Euro
-    "FKP", # Falkland Islands Pound
-    "DKK", # Danish Krone
-    "FJD", # Fiji Dollar
-    "EUR", # Euro
-    "EUR", # Euro
-    "EUR", # Euro
-    "XPF", # CFP Franc
-    "EUR", # Euro
-    "XAF", # CFA Franc BEAC
-    "GMD", # Dalasi
-    "GEL", # Lari
-    "EUR", # Euro
-    "GHS", # Ghana Cedi
-    "GIP", # Gibraltar Pound
-    "EUR", # Euro
-    "DKK", # Danish Krone
-    "XCD", # East Caribbean Dollar
-    "EUR", # Euro
-    "USD", # US Dollar
-    "GTQ", # Quetzal
-    "GBP", # Pound Sterling
-    "GNF", # Guinean Franc
-    "XOF", # CFA Franc BCEAO
-    "GYD", # Guyana Dollar
-    "HTG", # Gourde
-    "USD", # US Dollar
-    "AUD", # Australian Dollar
-    "EUR", # Euro
-    "HNL", # Lempira
-    "HKD", # Hong Kong Dollar
-    "HUF", # Forint
-    "ISK", # Iceland Krona
-    "INR", # Indian Rupee
-    "IDR", # Rupiah
-    "XDR", # SDR (Special Drawing Right)
-    "IRR", # Iranian Rial
-    "IQD", # Iraqi Dinar
-    "EUR", # Euro
-    "GBP", # Pound Sterling
-    "ILS", # New Israeli Sheqel
-    "EUR", # Euro
-    "JMD", # Jamaican Dollar
-    "JPY", # Yen
-    "GBP", # Pound Sterling
-    "JOD", # Jordanian Dinar
-    "KZT", # Tenge
-    "KES", # Kenyan Shilling
-    "AUD", # Australian Dollar
-    "KPW", # North Korean Won
-    "KRW", # Won
-    "KWD", # Kuwaiti Dinar
-    "KGS", # Som
-    "LAK", # Lao Kip
-    "EUR", # Euro
-    "LBP", # Lebanese Pound
-    "LSL", # Loti
-    "ZAR", # Rand
-    "LRD", # Liberian Dollar
-    "LYD", # Libyan Dinar
-    "CHF", # Swiss Franc
-    "EUR", # Euro
-    "EUR", # Euro
-    "MOP", # Pataca
-    "MKD", # Denar
-    "MGA", # Malagasy Ariary
-    "MWK", # Malawi Kwacha
-    "MYR", # Malaysian Ringgit
-    "MVR", # Rufiyaa
-    "XOF", # CFA Franc BCEAO
-    "EUR", # Euro
-    "USD", # US Dollar
-    "EUR", # Euro
-    "MRU", # Ouguiya
-    "MUR", # Mauritius Rupee
-    "EUR", # Euro
-    "XUA", # ADB Unit of Account
-    "MXN", # Mexican Peso
-    "MXV", # Mexican Unidad de Inversion (UDI)
-    "USD", # US Dollar
-    "MDL", # Moldovan Leu
-    "EUR", # Euro
-    "MNT", # Tugrik
-    "EUR", # Euro
-    "XCD", # East Caribbean Dollar
-    "MAD", # Moroccan Dirham
-    "MZN", # Mozambique Metical
-    "MMK", # Kyat
-    "NAD", # Namibia Dollar
-    "ZAR", # Rand
-    "AUD", # Australian Dollar
-    "NPR", # Nepalese Rupee
-    "EUR", # Euro
-    "XPF", # CFP Franc
-    "NZD", # New Zealand Dollar
-    "NIO", # Cordoba Oro
-    "XOF", # CFA Franc BCEAO
-    "NGN", # Naira
-    "NZD", # New Zealand Dollar
-    "AUD", # Australian Dollar
-    "USD", # US Dollar
-    "NOK", # Norwegian Krone
-    "OMR", # Rial Omani
-    "PKR", # Pakistan Rupee
-    "USD", # US Dollar
-    "PAB", # Balboa
-    "USD", # US Dollar
-    "PGK", # Kina
-    "PYG", # Guarani
-    "PEN", # Sol
-    "PHP", # Philippine Peso
-    "NZD", # New Zealand Dollar
-    "PLN", # Zloty
-    "EUR", # Euro
-    "USD", # US Dollar
-    "QAR", # Qatari Rial
-    "EUR", # Euro
-    "RON", # Romanian Leu
-    "RUB", # Russian Ruble
-    "RWF", # Rwanda Franc
-    "EUR", # Euro
-    "SHP", # Saint Helena Pound
-    "XCD", # East Caribbean Dollar
-    "XCD", # East Caribbean Dollar
-    "EUR", # Euro
-    "EUR", # Euro
-    "XCD", # East Caribbean Dollar
-    "WST", # Tala
-    "EUR", # Euro
-    "STN", # Dobra
-    "SAR", # Saudi Riyal
-    "XOF", # CFA Franc BCEAO
-    "RSD", # Serbian Dinar
-    "SCR", # Seychelles Rupee
-    "SLL", # Leone
-    "SGD", # Singapore Dollar
-    "ANG", # Netherlands Antillean Guilder
-    "XSU", # Sucre
-    "EUR", # Euro
-    "EUR", # Euro
-    "SBD", # Solomon Islands Dollar
-    "SOS", # Somali Shilling
-    "ZAR", # Rand
-    "SSP", # South Sudanese Pound
-    "EUR", # Euro
-    "LKR", # Sri Lanka Rupee
-    "SDG", # Sudanese Pound
-    "SRD", # Surinam Dollar
-    "NOK", # Norwegian Krone
-    "SZL", # Lilangeni
-    "SEK", # Swedish Krona
-    "CHF", # Swiss Franc
-    "CHE", # WIR Euro
-    "CHW", # WIR Franc
-    "SYP", # Syrian Pound
-    "TWD", # New Taiwan Dollar
-    "TJS", # Somoni
-    "TZS", # Tanzanian Shilling
-    "THB", # Baht
-    "USD", # US Dollar
-    "XOF", # CFA Franc BCEAO
-    "NZD", # New Zealand Dollar
-    "TOP", # Pa’anga
-    "TTD", # Trinidad and Tobago Dollar
-    "TND", # Tunisian Dinar
-    "TRY", # Turkish Lira
-    "TMT", # Turkmenistan New Manat
-    "USD", # US Dollar
-    "AUD", # Australian Dollar
-    "UGX", # Uganda Shilling
-    "UAH", # Hryvnia
-    "AED", # UAE Dirham
-    "GBP", # Pound Sterling
-    "USD", # US Dollar
-    "USD", # US Dollar
-    "USN", # US Dollar (Next day)
-    "UYU", # Peso Uruguayo
-    "UYI", # Uruguay Peso en Unidades Indexadas (UI)
-    "UYW", # Unidad Previsional
-    "UZS", # Uzbekistan Sum
-    "VUV", # Vatu
-    "VES", # Bolívar Soberano
-    "VND", # Dong
-    "USD", # US Dollar
-    "USD", # US Dollar
-    "XPF", # CFP Franc
-    "MAD", # Moroccan Dirham
-    "YER", # Yemeni Rial
-    "ZMW", # Zambian Kwacha
-    "ZWL", # Zimbabwe Dollar
-    "XBA", # Bond Markets Unit European Composite Unit (EURCO)
-    "XBB", # Bond Markets Unit European Monetary Unit (E.M.U.-6)
-    "XBC", # Bond Markets Unit European Unit of Account 9 (E.U.A.-9)
-    "XBD", # Bond Markets Unit European Unit of Account 17 (E.U.A.-17)
-    "XTS", # Codes specifically reserved for testing purposes
-    "XXX", # The codes assigned for transactions where no currency is involved
-    "XAU", # Gold
-    "XPD", # Palladium
-    "XPT", # Platinum
-    "XAG", # Silver
+    # Afghani
+    "AFN",
+    # Euro
+    "EUR",
+    # Lek
+    "ALL",
+    # Algerian Dinar
+    "DZD",
+    # US Dollar
+    "USD",
+    # Euro
+    "EUR",
+    # Kwanza
+    "AOA",
+    # East Caribbean Dollar
+    "XCD",
+    # East Caribbean Dollar
+    "XCD",
+    # Argentine Peso
+    "ARS",
+    # Armenian Dram
+    "AMD",
+    # Aruban Florin
+    "AWG",
+    # Australian Dollar
+    "AUD",
+    # Euro
+    "EUR",
+    # Azerbaijan Manat
+    "AZN",
+    # Bahamian Dollar
+    "BSD",
+    # Bahraini Dinar
+    "BHD",
+    # Taka
+    "BDT",
+    # Barbados Dollar
+    "BBD",
+    # Belarusian Ruble
+    "BYN",
+    # Euro
+    "EUR",
+    # Belize Dollar
+    "BZD",
+    # CFA Franc BCEAO
+    "XOF",
+    # Bermudian Dollar
+    "BMD",
+    # Indian Rupee
+    "INR",
+    # Ngultrum
+    "BTN",
+    # Boliviano
+    "BOB",
+    # Mvdol
+    "BOV",
+    # US Dollar
+    "USD",
+    # Convertible Mark
+    "BAM",
+    # Pula
+    "BWP",
+    # Norwegian Krone
+    "NOK",
+    # Brazilian Real
+    "BRL",
+    # US Dollar
+    "USD",
+    # Brunei Dollar
+    "BND",
+    # Bulgarian Lev
+    "BGN",
+    # CFA Franc BCEAO
+    "XOF",
+    # Burundi Franc
+    "BIF",
+    # Cabo Verde Escudo
+    "CVE",
+    # Riel
+    "KHR",
+    # CFA Franc BEAC
+    "XAF",
+    # Canadian Dollar
+    "CAD",
+    # Cayman Islands Dollar
+    "KYD",
+    # CFA Franc BEAC
+    "XAF",
+    # CFA Franc BEAC
+    "XAF",
+    # Chilean Peso
+    "CLP",
+    # Unidad de Fomento
+    "CLF",
+    # Yuan Renminbi
+    "CNY",
+    # Australian Dollar
+    "AUD",
+    # Australian Dollar
+    "AUD",
+    # Colombian Peso
+    "COP",
+    # Unidad de Valor Real
+    "COU",
+    # Comorian Franc
+    "KMF",
+    # Congolese Franc
+    "CDF",
+    # CFA Franc BEAC
+    "XAF",
+    # New Zealand Dollar
+    "NZD",
+    # Costa Rican Colon
+    "CRC",
+    # CFA Franc BCEAO
+    "XOF",
+    # Kuna
+    "HRK",
+    # Cuban Peso
+    "CUP",
+    # Peso Convertible
+    "CUC",
+    # Netherlands Antillean Guilder
+    "ANG",
+    # Euro
+    "EUR",
+    # Czech Koruna
+    "CZK",
+    # Danish Krone
+    "DKK",
+    # Djibouti Franc
+    "DJF",
+    # East Caribbean Dollar
+    "XCD",
+    # Dominican Peso
+    "DOP",
+    # US Dollar
+    "USD",
+    # Egyptian Pound
+    "EGP",
+    # El Salvador Colon
+    "SVC",
+    # US Dollar
+    "USD",
+    # CFA Franc BEAC
+    "XAF",
+    # Nakfa
+    "ERN",
+    # Euro
+    "EUR",
+    # Ethiopian Birr
+    "ETB",
+    # Euro
+    "EUR",
+    # Falkland Islands Pound
+    "FKP",
+    # Danish Krone
+    "DKK",
+    # Fiji Dollar
+    "FJD",
+    # Euro
+    "EUR",
+    # Euro
+    "EUR",
+    # Euro
+    "EUR",
+    # CFP Franc
+    "XPF",
+    # Euro
+    "EUR",
+    # CFA Franc BEAC
+    "XAF",
+    # Dalasi
+    "GMD",
+    # Lari
+    "GEL",
+    # Euro
+    "EUR",
+    # Ghana Cedi
+    "GHS",
+    # Gibraltar Pound
+    "GIP",
+    # Euro
+    "EUR",
+    # Danish Krone
+    "DKK",
+    # East Caribbean Dollar
+    "XCD",
+    # Euro
+    "EUR",
+    # US Dollar
+    "USD",
+    # Quetzal
+    "GTQ",
+    # Pound Sterling
+    "GBP",
+    # Guinean Franc
+    "GNF",
+    # CFA Franc BCEAO
+    "XOF",
+    # Guyana Dollar
+    "GYD",
+    # Gourde
+    "HTG",
+    # US Dollar
+    "USD",
+    # Australian Dollar
+    "AUD",
+    # Euro
+    "EUR",
+    # Lempira
+    "HNL",
+    # Hong Kong Dollar
+    "HKD",
+    # Forint
+    "HUF",
+    # Iceland Krona
+    "ISK",
+    # Indian Rupee
+    "INR",
+    # Rupiah
+    "IDR",
+    # SDR (Special Drawing Right)
+    "XDR",
+    # Iranian Rial
+    "IRR",
+    # Iraqi Dinar
+    "IQD",
+    # Euro
+    "EUR",
+    # Pound Sterling
+    "GBP",
+    # New Israeli Sheqel
+    "ILS",
+    # Euro
+    "EUR",
+    # Jamaican Dollar
+    "JMD",
+    # Yen
+    "JPY",
+    # Pound Sterling
+    "GBP",
+    # Jordanian Dinar
+    "JOD",
+    # Tenge
+    "KZT",
+    # Kenyan Shilling
+    "KES",
+    # Australian Dollar
+    "AUD",
+    # North Korean Won
+    "KPW",
+    # Won
+    "KRW",
+    # Kuwaiti Dinar
+    "KWD",
+    # Som
+    "KGS",
+    # Lao Kip
+    "LAK",
+    # Euro
+    "EUR",
+    # Lebanese Pound
+    "LBP",
+    # Loti
+    "LSL",
+    # Rand
+    "ZAR",
+    # Liberian Dollar
+    "LRD",
+    # Libyan Dinar
+    "LYD",
+    # Swiss Franc
+    "CHF",
+    # Euro
+    "EUR",
+    # Euro
+    "EUR",
+    # Pataca
+    "MOP",
+    # Denar
+    "MKD",
+    # Malagasy Ariary
+    "MGA",
+    # Malawi Kwacha
+    "MWK",
+    # Malaysian Ringgit
+    "MYR",
+    # Rufiyaa
+    "MVR",
+    # CFA Franc BCEAO
+    "XOF",
+    # Euro
+    "EUR",
+    # US Dollar
+    "USD",
+    # Euro
+    "EUR",
+    # Ouguiya
+    "MRU",
+    # Mauritius Rupee
+    "MUR",
+    # Euro
+    "EUR",
+    # ADB Unit of Account
+    "XUA",
+    # Mexican Peso
+    "MXN",
+    # Mexican Unidad de Inversion (UDI)
+    "MXV",
+    # US Dollar
+    "USD",
+    # Moldovan Leu
+    "MDL",
+    # Euro
+    "EUR",
+    # Tugrik
+    "MNT",
+    # Euro
+    "EUR",
+    # East Caribbean Dollar
+    "XCD",
+    # Moroccan Dirham
+    "MAD",
+    # Mozambique Metical
+    "MZN",
+    # Kyat
+    "MMK",
+    # Namibia Dollar
+    "NAD",
+    # Rand
+    "ZAR",
+    # Australian Dollar
+    "AUD",
+    # Nepalese Rupee
+    "NPR",
+    # Euro
+    "EUR",
+    # CFP Franc
+    "XPF",
+    # New Zealand Dollar
+    "NZD",
+    # Cordoba Oro
+    "NIO",
+    # CFA Franc BCEAO
+    "XOF",
+    # Naira
+    "NGN",
+    # New Zealand Dollar
+    "NZD",
+    # Australian Dollar
+    "AUD",
+    # US Dollar
+    "USD",
+    # Norwegian Krone
+    "NOK",
+    # Rial Omani
+    "OMR",
+    # Pakistan Rupee
+    "PKR",
+    # US Dollar
+    "USD",
+    # Balboa
+    "PAB",
+    # US Dollar
+    "USD",
+    # Kina
+    "PGK",
+    # Guarani
+    "PYG",
+    # Sol
+    "PEN",
+    # Philippine Peso
+    "PHP",
+    # New Zealand Dollar
+    "NZD",
+    # Zloty
+    "PLN",
+    # Euro
+    "EUR",
+    # US Dollar
+    "USD",
+    # Qatari Rial
+    "QAR",
+    # Euro
+    "EUR",
+    # Romanian Leu
+    "RON",
+    # Russian Ruble
+    "RUB",
+    # Rwanda Franc
+    "RWF",
+    # Euro
+    "EUR",
+    # Saint Helena Pound
+    "SHP",
+    # East Caribbean Dollar
+    "XCD",
+    # East Caribbean Dollar
+    "XCD",
+    # Euro
+    "EUR",
+    # Euro
+    "EUR",
+    # East Caribbean Dollar
+    "XCD",
+    # Tala
+    "WST",
+    # Euro
+    "EUR",
+    # Dobra
+    "STN",
+    # Saudi Riyal
+    "SAR",
+    # CFA Franc BCEAO
+    "XOF",
+    # Serbian Dinar
+    "RSD",
+    # Seychelles Rupee
+    "SCR",
+    # Leone
+    "SLL",
+    # Singapore Dollar
+    "SGD",
+    # Netherlands Antillean Guilder
+    "ANG",
+    # Sucre
+    "XSU",
+    # Euro
+    "EUR",
+    # Euro
+    "EUR",
+    # Solomon Islands Dollar
+    "SBD",
+    # Somali Shilling
+    "SOS",
+    # Rand
+    "ZAR",
+    # South Sudanese Pound
+    "SSP",
+    # Euro
+    "EUR",
+    # Sri Lanka Rupee
+    "LKR",
+    # Sudanese Pound
+    "SDG",
+    # Surinam Dollar
+    "SRD",
+    # Norwegian Krone
+    "NOK",
+    # Lilangeni
+    "SZL",
+    # Swedish Krona
+    "SEK",
+    # Swiss Franc
+    "CHF",
+    # WIR Euro
+    "CHE",
+    # WIR Franc
+    "CHW",
+    # Syrian Pound
+    "SYP",
+    # New Taiwan Dollar
+    "TWD",
+    # Somoni
+    "TJS",
+    # Tanzanian Shilling
+    "TZS",
+    # Baht
+    "THB",
+    # US Dollar
+    "USD",
+    # CFA Franc BCEAO
+    "XOF",
+    # New Zealand Dollar
+    "NZD",
+    # Pa’anga
+    "TOP",
+    # Trinidad and Tobago Dollar
+    "TTD",
+    # Tunisian Dinar
+    "TND",
+    # Turkish Lira
+    "TRY",
+    # Turkmenistan New Manat
+    "TMT",
+    # US Dollar
+    "USD",
+    # Australian Dollar
+    "AUD",
+    # Uganda Shilling
+    "UGX",
+    # Hryvnia
+    "UAH",
+    # UAE Dirham
+    "AED",
+    # Pound Sterling
+    "GBP",
+    # US Dollar
+    "USD",
+    # US Dollar
+    "USD",
+    # US Dollar (Next day)
+    "USN",
+    # Peso Uruguayo
+    "UYU",
+    # Uruguay Peso en Unidades Indexadas (UI)
+    "UYI",
+    # Unidad Previsional
+    "UYW",
+    # Uzbekistan Sum
+    "UZS",
+    # Vatu
+    "VUV",
+    # Bolívar Soberano
+    "VES",
+    # Dong
+    "VND",
+    # US Dollar
+    "USD",
+    # US Dollar
+    "USD",
+    # CFP Franc
+    "XPF",
+    # Moroccan Dirham
+    "MAD",
+    # Yemeni Rial
+    "YER",
+    # Zambian Kwacha
+    "ZMW",
+    # Zimbabwe Dollar
+    "ZWL",
+    # Bond Markets Unit European Composite Unit (EURCO)
+    "XBA",
+    # Bond Markets Unit European Monetary Unit (E.M.U.-6)
+    "XBB",
+    # Bond Markets Unit European Unit of Account 9 (E.U.A.-9)
+    "XBC",
+    # Bond Markets Unit European Unit of Account 17 (E.U.A.-17)
+    "XBD",
+    # Codes specifically reserved for testing purposes
+    "XTS",
+    # The codes assigned for transactions where no currency is involved
+    "XXX",
+    # Gold
+    "XAU",
+    # Palladium
+    "XPD",
+    # Platinum
+    "XPT",
+    # Silver
+    "XAG"
   ]
 
-  @spec validate?(String.t) :: boolean
+  @spec validate?(String.t()) :: boolean
   def validate?(input) when is_binary(input) do
     Enum.member?(@currency_codes, input)
   end
