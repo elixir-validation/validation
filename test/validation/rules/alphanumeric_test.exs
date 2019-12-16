@@ -29,7 +29,7 @@ defmodule Validation.Rules.AlphanumericTest do
     refute V.validate?("_")
     refute V.validate?("dgç")
     refute V.validate?("\t")
-#    refute V.validate?("\n") @TODO: WHY IS BREAKLINE MATCHING?
+    #    refute V.validate?("\n") @TODO: WHY IS BREAKLINE MATCHING?
     refute V.validate?("\nabc")
     refute V.validate?("\tdef")
     refute V.validate?("\nabc \t")

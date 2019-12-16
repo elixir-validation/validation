@@ -9,11 +9,17 @@ defmodule Validation.Rules.CreditCard.VisaTest do
   end
 
   test "invalid credit card - visa" do
-    refute V.validate?("340-3161-9380-9364")   # amex
-    refute V.validate?("6011000990139424")     # discover
-    refute V.validate?("30351042633884")       # diners
-    refute V.validate?("3566002020360505")     # jcb
-    refute V.validate?("5376 7473 9720 8720")  # master
-    refute V.validate?("2222 4000 4124 0011")  # master
+    # amex
+    refute V.validate?("340-3161-9380-9364")
+    # discover
+    refute V.validate?("6011000990139424")
+    # diners
+    refute V.validate?("30351042633884")
+    # jcb
+    refute V.validate?("3566002020360505")
+    # master
+    refute V.validate?("5376 7473 9720 8720")
+    # master
+    refute V.validate?("2222 4000 4124 0011")
   end
 end

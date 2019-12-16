@@ -19,7 +19,7 @@ defmodule Validation.Rules.VowelTest do
   end
 
   test "invalid vowel" do
-#    refute V.validate?("\n") @TODO: WHY IS BREAKLINE MATCHING?
+    #    refute V.validate?("\n") @TODO: WHY IS BREAKLINE MATCHING?
     refute V.validate?("\t")
     refute V.validate?("\r")
     refute V.validate?("ul")

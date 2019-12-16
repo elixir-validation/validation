@@ -12,7 +12,8 @@ defmodule Validation.MixProject do
       deps: deps(),
 
       # Hex
-      description: "Validation library with +25 fully tested rules — Email, IBAN, Credit Card, UUID, MacAddress... and many more!",
+      description:
+        "Validation library with +25 fully tested rules — Email, IBAN, Credit Card, UUID, MacAddress... and many more!",
       package: package(),
 
       # Docs
@@ -21,7 +22,12 @@ defmodule Validation.MixProject do
 
       # coveralls
       test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: [coveralls: :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test]
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -55,7 +61,7 @@ defmodule Validation.MixProject do
       source_ref: "v#{@version}",
       canonical: "http://hexdocs.pm/validation",
       logo: "media/logo-docs.png",
-      source_url: "https://github.com/elixir-validation/validation",
+      source_url: "https://github.com/elixir-validation/validation"
     ]
   end
 end

@@ -1,7 +1,7 @@
 defmodule Validation.Rules.CPF do
   @moduledoc false
 
-  @spec validate?(String.t) :: boolean
+  @spec validate?(String.t()) :: boolean
   def validate?(input) when is_binary(input) do
     # Yes, we know. This code is Ugly!
     # But it works. Code ported from jsfromhell.com
@@ -14,7 +14,7 @@ defmodule Validation.Rules.CPF do
 
       n = rem(n, 11)
 
-      c_9   = String.at(c, 9) |> String.to_integer
+      c_9 = String.at(c, 9) |> String.to_integer()
       check = if n < 2, do: 0, else: 11 - n
 
       if c_9 == check do
@@ -22,7 +22,7 @@ defmodule Validation.Rules.CPF do
 
         n = rem(n, 11)
 
-        c_10  = String.at(c, 10) |> String.to_integer
+        c_10 = String.at(c, 10) |> String.to_integer()
         check = if n < 2, do: 0, else: 11 - n
 
         c_10 == check
@@ -35,9 +35,9 @@ defmodule Validation.Rules.CPF do
   end
 
   defp initial_validation(input) do
-        validate_length(input)
-    and validate_repeated_value(input)
-    and validate_invalid_values(input)
+    validate_length(input) and
+      validate_repeated_value(input) and
+      validate_invalid_values(input)
   end
 
   defp validate_length(input) do
@@ -59,9 +59,9 @@ defmodule Validation.Rules.CPF do
   end
 
   defp loop_check(n, s, i, c) do
-    c_item = String.at(c, i) |> String.to_integer
+    c_item = String.at(c, i) |> String.to_integer()
 
-    n = n + (c_item * s)
+    n = n + c_item * s
 
     i = i + 1
     s = s - 1

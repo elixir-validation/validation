@@ -1,7 +1,7 @@
 defmodule Validation.Rules.CNH do
   @moduledoc false
 
-  @spec validate?(String.t) :: boolean
+  @spec validate?(String.t()) :: boolean
   def validate?(input) when is_binary(input) do
     # only numbers
     input = Regex.replace(~r/\D/, input, "")
@@ -12,13 +12,13 @@ defmodule Validation.Rules.CNH do
 
       dv1 = rem(s1, 11)
 
-      input_9 = String.at(input, 9) |> String.to_integer
-      check   = if dv1 > 9, do: 0, else: dv1
+      input_9 = String.at(input, 9) |> String.to_integer()
+      check = if dv1 > 9, do: 0, else: dv1
 
       if input_9 == check do
-        dv2 = rem(s2, 11) - (if dv1 > 9, do: 2, else: 0)
+        dv2 = rem(s2, 11) - if dv1 > 9, do: 2, else: 0
 
-        input_10 = String.at(input, 10) |> String.to_integer
+        input_10 = String.at(input, 10) |> String.to_integer()
 
         check =
           if dv2 < 0 do
